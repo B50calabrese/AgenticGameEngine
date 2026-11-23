@@ -38,7 +38,8 @@ This document tracks all project milestones, active epics, task states, and cros
 | :--- | :--- | :--- | :--- | :--- |
 | `INFRA-01` | Equip workspace with agent suite and system instructions | Orchestrator | `DONE` | None |
 | `INFRA-02` | Create operational skills (hiring, tracking, breakdown, C++) | HR / Docs | `DONE` | `INFRA-01` |
-| `BUILD-01` | Scaffold clean directory tree and top-level Makefile | Systems | `TODO` | `INFRA-02` |
+| `INFRA-03` | Onboard `analyst` and `researcher` agents with updated mandates | HR | `DONE` | `INFRA-02` |
+| `BUILD-01` | Scaffold clean directory tree and top-level Makefile | Systems | `IN_PROGRESS` | `INFRA-03` |
 | `BUILD-02` | Configure submodule-friendly root CMakeLists.txt | Systems / Coding | `TODO` | `BUILD-01` |
 
 *Status definitions: `TODO`, `IN_PROGRESS`, `REVIEW`, `DONE`, `BLOCKED`.*
@@ -49,16 +50,14 @@ This document tracks all project milestones, active epics, task states, and cros
 
 Use this section to record progress at the end of each session so future sessions resume with zero ambiguity.
 
-### Session: 2026-11-22 (Session 1 - Infrastructure Setup)
-* **Goal**: Equip repository with agent suite, operational skills, task board, and ADR framework.
+### Session: 2026-11-23 (Session 2 - Agent Onboarding & Task 1 Inception)
+* **Goal**: Onboard `analyst` and `researcher` agents; begin Milestone 1 (Task 1: Core Foundation & Build System).
 * **Completed**:
-  * Established [AGENTS.md](AGENTS.md) with Google C++ mandates, curl permissions for reference repo, and agent boundaries.
-  * Configured full subagent suite under `.agents/agents/` (`orchestrator`, `hr`, `systems`, `coding`, `optimizer`, `docs`).
-  * Configured operational skills under `.agents/skills/` (`agent-hiring`, `task-breakdown`, `session-tracking`, `google-cpp-style`, `code-optimization`, `engine-documentation`).
-  * Initialized Architecture Decision Records under `docs/adr/` with template and ADR-0001.
-  * Formatted `.clang-format` enforcing Google C++ Style.
-* **In Progress**: Milestone 0 foundation complete; awaiting user review before initiating project scaffolding and code.
+  * Onboarded `analyst` (.agents/agents/analyst.md) with mandate to dissect problems and proactively ask user questions.
+  * Onboarded `researcher` (.agents/agents/researcher.md) with mandate to survey industry prior art and critically evaluate reference repo without treating it as a gold standard.
+  * Updated [AGENTS.md](AGENTS.md) rules and roster.
+* **In Progress**: Dissecting Task 1 (`BUILD-01` & `BUILD-02`) and researching prior art for submodule-friendly build layouts.
 * **Immediate Next Steps**:
-  1. User review of agent suite and skills.
-  2. Proceed to Task `BUILD-01`: Scaffolding directory tree (`include/`, `src/`, `demos/`, `tests/`) and `Makefile`.
+  1. Have `analyst` dissect the requirements for Task 1 and present any clarifying questions.
+  2. Have `researcher` compare prior art for CMake submodule patterns and top-level Makefile ergonomics.
   3. Initialize `docs/adr/` with ADR-0001.

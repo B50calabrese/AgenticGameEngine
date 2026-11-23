@@ -18,7 +18,7 @@ Welcome to the **Agentic Game Engine** project. This repository is built using a
 
 * **Reference Repository**: [B50calabrese/GameEngine](https://github.com/B50calabrese/GameEngine).
 * **Reference Sanction**: Agents are **explicitly permitted to use `curl`** to inspect the reference repository, its raw GitHub content, and the GitHub API for code patterns, architectural references, and documentation.
-* **Adaptation, Not Blind Copying**: Never blindly copy reference code. Adapt and improve it according to modern Google C++ style, cross-platform abstractions, and our submodule/2D+ goals.
+* **Not a Gold Standard**: The reference repository is a historical baseline and architectural starting point, **never a gold standard**. Critically evaluate its design, actively identify shortcomings or anti-patterns, and compare against modern industry standards.
 
 ---
 
@@ -57,6 +57,8 @@ The workspace is maintained by a specialized, hyper-focused agent suite:
 | Agent | Responsibility | Primary Boundaries |
 | :--- | :--- | :--- |
 | **`orchestrator`** | Project management, task planning, subagent dispatching, milestone verification. | Does not write engine code directly; delegates to specialists. |
+| **`analyst`** | Problem dissection, requirements extraction, edge-case probing, asking clarifying questions. | Does not implement code or conduct broad external research; focuses on problem clarity. |
+| **`researcher`** | Prior art investigation, comparative library/pattern analysis, reference codebase inspection. | Does not treat reference as gold standard; does not make final architectural decisions. |
 | **`hr`** | Onboarding new agents, drafting agent specifications, maintaining skills. | Requires human approval before registering any new agent. |
 | **`systems`** | Subsystem architecture, cross-module contracts, public API stability. | Ensures subsystems stay decoupled, modular, and submodule-friendly. |
 | **`coding`** | C++ implementation, unit testing with Google Test, formatting. | Implements code strictly according to Google C++ and system contracts. |
