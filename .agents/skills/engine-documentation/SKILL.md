@@ -1,69 +1,78 @@
 ---
 name: engine-documentation
-description: Documentation standards, Architecture Decision Records (ADR) authoring, Doxygen API commenting, and submodule consumer guide maintenance.
+description: Standards and procedures for maintaining the living documentation wiki, ADRs, Doxygen comments, and consumer guides.
 ---
 
-# Engine Documentation Standards Skill
+# Engine Documentation & Living Wiki Protocol Skill
 
-This skill guides the **Documentation Agent** and developers in authoring and maintaining high-quality documentation across the codebase.
-
----
-
-## 1. Documentation Pillars
-
-Our documentation serves three key audiences:
-1. **Downstream Game Developers (Submodule Consumers)**: Need clear instructions on embedding the engine, configuring CMake, and using public APIs.
-2. **Engine Contributors & Subagents**: Need clear architectural contracts, subsystem boundaries, and ADR rationales.
-3. **API Users**: Need precise Doxygen comments in public headers explaining inputs, outputs, ownership, and failure modes.
+This skill guides the **Documentation Agent**, **Orchestrator**, and contributors in authoring, organizing, and maintaining the engine's documentation as a living wiki.
 
 ---
 
-## 2. Submodule Consumer Documentation Standard
+## 1. The Living Wiki Structure (`docs/`)
 
-Every subsystem and public API must document how external projects interact with it.
-The root `README.md` and `docs/submodule_guide.md` must explain:
-1. **Adding Submodule**:
-   ```bash
-   git submodule add <repo-url> third_party/engine
-   ```
-2. **CMake Integration**:
-   ```cmake
-   add_subdirectory(third_party/engine)
-   target_link_libraries(MyGame PRIVATE engine)
-   ```
-3. **Minimal Working Example**: A complete, compilable ~20-line `main.cpp` initializing the engine window and running a tick.
+The `docs/` directory is organized as an interconnected, navigable knowledge base:
 
----
-
-## 3. Architecture Decision Records (ADR) Authoring
-
-Whenever a foundational design choice is made (e.g., choice of ECS layout, OpenGL batching strategy, Lua binding mechanism, platform abstraction design):
-1. Create `docs/adr/XXXX-<title-in-kebab-case>.md` using `docs/adr/template.md`.
-2. Clearly articulate:
-   * **Context**: What problem or constraint led to this decision?
-   * **Considered Options**: At least 2 viable options with pros and cons.
-   * **Decision**: Which option was chosen and why?
-   * **Consequences**: Both positive advantages and negative trade-offs.
-3. Add the new record to the index in `docs/adr/README.md`.
-
----
-
-## 4. Doxygen Public API Comments
-
-All public headers (`include/engine/...`) must be documented using Doxygen-style blocks:
-
-```cpp
-/**
- * @brief Submits a quad to be drawn in the current frame batch.
- *
- * Draw commands are sorted by shader program, texture, and Z-layer
- * before rendering.
- *
- * @param position World space center position of the quad.
- * @param size Width and height of the quad.
- * @param texture Handle to the texture to bind, or nullptr for flat color.
- * @param color Tint color applied to the quad vertices.
- */
-void DrawQuad(const Vector3& position, const Vector2& size,
-              const Texture* texture, const Color& color);
+```text
+docs/
+├── README.md                  # Master Wiki Portal & Category Index
+├── architecture/              # High-level system topology and layer interactions
+│   └── overview.md
+├── subsystems/                # Deep-dive pages for every engine subsystem
+│   ├── core.md
+│   ├── ecs.md (upcoming)
+│   ├── renderer.md (upcoming)
+│   └── ...
+├── guides/                    # Practical guides for consumers and contributors
+│   └── submodule_guide.md
+├── standards/                 # Quality, style, and maintenance standards
+│   ├── cpp_guidelines.md
+│   └── wiki_maintenance.md
+└── adr/                       # Architectural Decision Records
+    ├── README.md
+    └── XXXX-title.md
 ```
+
+---
+
+## 2. Standard Subsystem Wiki Template
+
+Every subsystem document in `docs/subsystems/<name>.md` must follow this structure:
+
+```markdown
+# [Subsystem Name] Subsystem
+
+[One-sentence overview of the subsystem's responsibility]
+
+* **Status**: [Proposed | In Progress | Active & Implemented]
+* **Public Headers**: `include/engine/<subsystem>/`
+* **Internal Source**: `src/engine/<subsystem>/`
+* **Tests**: `tests/<subsystem>_test.cpp`
+
+---
+
+## 1. Architectural Role & Responsibilities
+[Why this subsystem exists and what it owns]
+
+## 2. Public API & Key Classes
+[Descriptions of primary classes and methods]
+
+## 3. Usage Example
+[Compilable, clean C++ code snippet demonstrating typical usage]
+
+## 4. Invariants, Threading & Memory Ownership
+[Rules, allocation patterns, and lifecycle constraints]
+
+## 5. Related ADRs
+- [Link to relevant ADRs]
+```
+
+---
+
+## 3. Definition of Done: Wiki Synchronization
+
+Before any epic, milestone, or major feature is marked `DONE`:
+1. **Subsystem Page**: Created or updated in `docs/subsystems/`.
+2. **Master Index**: Checked in `docs/README.md` to ensure the link is present.
+3. **Consumer Impact**: If public API changed, update `docs/guides/submodule_guide.md`.
+4. **ADR Written**: If a foundational decision was made, document in `docs/adr/`.

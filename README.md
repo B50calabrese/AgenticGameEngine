@@ -87,7 +87,7 @@ int main() {
 }
 ```
 
-For full integration details and advanced options, see the **[Submodule Consumer Guide](docs/submodule_guide.md)**.
+For full integration details and advanced options, see the **[Submodule Consumer Guide](docs/guides/submodule_guide.md)** or explore the **[Documentation Wiki](docs/README.md)**.
 
 ---
 
@@ -102,9 +102,12 @@ For full integration details and advanced options, see the **[Submodule Consumer
 │   └── core/              # Core implementation files
 ├── tests/                 # Unit test suite using Google Test
 ├── demos/                 # Runnable demo applications and sandboxes
-├── docs/
-│   ├── adr/               # Architecture Decision Records (ADRs)
-│   └── submodule_guide.md # Downstream consumer integration guide
+├── docs/                  # Living Engine Documentation Wiki (docs/README.md)
+│   ├── architecture/      # High-level architecture and system design
+│   ├── subsystems/        # Deep dives into each engine subsystem
+│   ├── guides/            # Submodule consumer and developer guides
+│   ├── standards/         # Google C++ and Wiki maintenance standards
+│   └── adr/               # Architecture Decision Records (ADRs)
 ├── .agents/
 │   ├── agents/            # Subagent specifications (orchestrator, systems, coding, etc.)
 │   └── skills/            # Procedural skills (task breakdown, style guide, etc.)

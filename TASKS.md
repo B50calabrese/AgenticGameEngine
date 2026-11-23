@@ -42,6 +42,7 @@ This document tracks all project milestones, active epics, task states, and cros
 | `INFRA-03` | Onboard `analyst` and `researcher` agents with updated mandates | HR | `DONE` | `INFRA-02` |
 | `BUILD-01` | Scaffold clean directory tree and top-level Makefile | Systems | `DONE` | `INFRA-03` |
 | `BUILD-02` | Configure submodule-friendly root CMakeLists.txt | Systems / Coding | `DONE` | `BUILD-01` |
+| `WIKI-01` | Formalize living Wiki architecture & continuous documentation invariant | Docs / Orchestrator | `DONE` | `BUILD-02` |
 | `CORE-01` | Implement core math primitives (Vector2, Vector3, Matrix4) | Systems / Coding | `TODO` | `BUILD-02` |
 | `PLAT-01` | Implement window and OpenGL context abstraction | Systems / Coding | `TODO` | `BUILD-02` |
 
@@ -53,16 +54,16 @@ This document tracks all project milestones, active epics, task states, and cros
 
 Use this section to record progress at the end of each session so future sessions resume with zero ambiguity.
 
-### Session: 2026-11-23 (Session 2 - Task 1 Completion & Validation)
-* **Goal**: Deliver Task 1 (`BUILD-01` & `BUILD-02`): Core foundation, submodule-friendly CMake, and top-level Makefile.
+### Session: 2026-11-23 (Session 3 - Living Wiki Architecture & Documentation Invariant)
+* **Goal**: Establish repository documentation as an active, living wiki and enforce documentation invariant across all agents.
 * **Completed**:
-  * Scaffolded directory tree: `include/engine/core/`, `src/engine/core/`, `tests/`, `demos/`.
-  * Created [Makefile](Makefile) with targets: `build`, `test`, `demo`, `format`, `clean`.
-  * Created [CMakeLists.txt](CMakeLists.txt) with C++17, namespaced target `engine::engine`, and `Option A` FetchContent fallback.
-  * Implemented core modules: `base.h`, `version.h`, `log.h`, `assert.h` and implementations.
-  * Created [core_test.cpp](tests/core_test.cpp) (Google Test) and [demos/sandbox/main.cpp](demos/sandbox/main.cpp).
-  * Validated build: `make test` passed 100% (3/3 tests) and `make demo` executed successfully.
-  * Authored [docs/adr/0002-submodule-friendly-cmake-and-makefile.md](docs/adr/0002-submodule-friendly-cmake-and-makefile.md).
+  * Created structured Wiki portal at [docs/README.md](docs/README.md) with sections for Architecture, Subsystems, Guides, Standards, and ADRs.
+  * Authored [docs/architecture/overview.md](docs/architecture/overview.md) detailing layer boundaries and data flow rules.
+  * Authored [docs/subsystems/core.md](docs/subsystems/core.md) as the first living subsystem wiki page.
+  * Authored [docs/standards/wiki_maintenance.md](docs/standards/wiki_maintenance.md) and [docs/standards/cpp_guidelines.md](docs/standards/cpp_guidelines.md).
+  * Promoted `docs` agent to **Chief Wiki Steward** in [.agents/agents/docs.md](.agents/agents/docs.md).
+  * Enforced **Wiki Gatekeeper Protocol** in [.agents/agents/orchestrator.md](.agents/agents/orchestrator.md) and [AGENTS.md](AGENTS.md): No major task is marked `DONE` without updating `docs/`.
+  * Updated [engine-documentation skill](.agents/skills/engine-documentation/SKILL.md) with living wiki template and SOP.
 * **Immediate Next Steps**:
-  1. Commit Task 1 files to git.
-  2. Dissect and design `CORE-01` (2D/3D math primitives: Vector2, Vector3, Matrix4) and `PLAT-01` (Window & Context abstraction).
+  1. Commit living wiki architecture to git.
+  2. Dissect and implement `CORE-01` (Math primitives: Vector2, Vector3, Matrix4) following the new wiki-first invariant.

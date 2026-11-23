@@ -71,11 +71,14 @@ The workspace is maintained by a specialized, hyper-focused agent suite:
 
 1. **Task-Driven Work**:
    * Every non-trivial operation must be tracked in [TASKS.md](TASKS.md).
-   * Tasks must follow the Work Breakdown Structure: **Contract/Headers First $\rightarrow$ Implementation $\rightarrow$ Tests & Validation**.
-2. **Cross-Session Continuity**:
+   * Tasks must follow the Work Breakdown Structure: **Contract/Headers First $\rightarrow$ Implementation $\rightarrow$ Tests & Validation $\rightarrow$ Wiki Documentation**.
+2. **Living Wiki & Documentation Invariant**:
+   * **Mandatory Invariant**: The repository's `docs/` directory functions as an active, living **Project Wiki**.
+   * **Definition of Done**: No major architectural change, new subsystem, public API evolution, or build system modification is considered complete until its corresponding wiki article in `docs/` is authored or synchronized, and linked to the master index in `docs/README.md`.
+3. **Cross-Session Continuity**:
    * At the beginning of each session, read [TASKS.md](TASKS.md) and recent ADRs in `docs/adr/` to restore state.
    * At the end of each session, update the **Session Handoff Log** in [TASKS.md](TASKS.md).
-3. **Architectural Decisions**:
+4. **Architectural Decisions**:
    * Major architectural decisions (subsystem boundaries, library additions, API overhauls) must be documented as an ADR in `docs/adr/`.
-4. **Agent Hiring Protocol**:
+5. **Agent Hiring Protocol**:
    * Any new agent persona must be processed through the `hr` agent and requires explicit human approval before creation.
