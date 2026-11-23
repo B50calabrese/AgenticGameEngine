@@ -5,6 +5,7 @@ Architecture Decision Records capture important technical and design decisions, 
 ## Index of Records
 
 * [0001 - Record Architecture Decisions](file:///home/antonio/code/AgenticGameEngine/docs/adr/0001-record-architecture-decisions.md)
+* [0002 - Submodule-Friendly Modern CMake and Makefile Architecture](file:///home/antonio/code/AgenticGameEngine/docs/adr/0002-submodule-friendly-cmake-and-makefile.md)
 
 ## ADR Workflow
 
