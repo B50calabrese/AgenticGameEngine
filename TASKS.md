@@ -43,8 +43,8 @@ This document tracks all project milestones, active epics, task states, and cros
 | `BUILD-01` | Scaffold clean directory tree and top-level Makefile | Systems | `DONE` | `INFRA-03` |
 | `BUILD-02` | Configure submodule-friendly root CMakeLists.txt | Systems / Coding | `DONE` | `BUILD-01` |
 | `WIKI-01` | Formalize living Wiki architecture & continuous documentation invariant | Docs / Orchestrator | `DONE` | `BUILD-02` |
+| `PLAT-01` | Implement abstract window interface and GLFW backend | Systems / Coding | `DONE` | `BUILD-02` |
 | `CORE-01` | Implement core math primitives (Vector2, Vector3, Matrix4) | Systems / Coding | `TODO` | `BUILD-02` |
-| `PLAT-01` | Implement window and OpenGL context abstraction | Systems / Coding | `TODO` | `BUILD-02` |
 
 *Status definitions: `TODO`, `IN_PROGRESS`, `REVIEW`, `DONE`, `BLOCKED`.*
 

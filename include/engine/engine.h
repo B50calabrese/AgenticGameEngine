@@ -13,5 +13,6 @@
 #include "engine/core/base.h"
 #include "engine/core/log.h"
 #include "engine/core/version.h"
+#include "engine/platform/window.h"
 
 #endif  // ENGINE_ENGINE_H_

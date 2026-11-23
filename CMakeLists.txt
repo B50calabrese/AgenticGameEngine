@@ -68,6 +68,7 @@ endif()
 add_library(engine STATIC
     src/engine/core/log.cpp
     src/engine/core/version.cpp
+    src/engine/platform/glfw_window.cpp
 )
 
 # Aliasing allows downstream submodule consumers and internal targets to use:
@@ -101,7 +102,8 @@ else()
     target_link_libraries(engine PUBLIC ${CMAKE_DL_LIBS})
 endif()
 
-if(TARGET glfw)
+if(TARGET glfw OR glfw3_FOUND)
+    target_compile_definitions(engine PUBLIC ENGINE_ENABLE_GLFW)
     target_link_libraries(engine PRIVATE glfw)
 endif()
 

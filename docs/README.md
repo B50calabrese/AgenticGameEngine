@@ -16,6 +16,7 @@ docs/
 │   └── cross_platform.md          # Platform abstraction principles
 ├── subsystems/                    # Living documentation for each subsystem
 │   ├── core.md                    # Core utilities, logging, version, assertions
+│   ├── platform.md                # Window abstraction, events, context lifecycle
 │   ├── ecs.md                     # Entity Component System (Upcoming)
 │   ├── renderer.md                # 2D/2.5D Batch Renderer (Upcoming)
 │   ├── physics.md                 # 2D Physics & Collision (Upcoming)

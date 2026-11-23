@@ -1,8 +1,16 @@
 add_executable(core_test
     core_test.cpp
 )
-
 target_link_libraries(core_test
+    PRIVATE
+        engine::engine
+        GTest::gtest_main
+)
+
+add_executable(window_test
+    window_test.cpp
+)
+target_link_libraries(window_test
     PRIVATE
         engine::engine
         GTest::gtest_main
@@ -10,3 +18,4 @@ target_link_libraries(core_test
 
 include(GoogleTest)
 gtest_discover_tests(core_test)
+gtest_discover_tests(window_test)

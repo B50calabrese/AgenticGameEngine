@@ -31,6 +31,9 @@ test: build
 demo: build
 	./$(BUILD_DIR)/demos/sandbox_demo
 
+window-demo: build
+	./$(BUILD_DIR)/demos/window_demo
+
 format:
 	@if command -v clang-format >/dev/null 2>&1; then \
 		find include src tests demos -name "*.h" -o -name "*.cpp" | xargs clang-format -i; \
