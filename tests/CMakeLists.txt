@@ -16,6 +16,16 @@ target_link_libraries(window_test
         GTest::gtest_main
 )
 
+add_executable(renderer_test
+    renderer_test.cpp
+)
+target_link_libraries(renderer_test
+    PRIVATE
+        engine::engine
+        GTest::gtest_main
+)
+
 include(GoogleTest)
 gtest_discover_tests(core_test)
 gtest_discover_tests(window_test)
+gtest_discover_tests(renderer_test)

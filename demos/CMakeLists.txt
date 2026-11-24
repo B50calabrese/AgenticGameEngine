@@ -13,3 +13,11 @@ target_link_libraries(window_demo
     PRIVATE
         engine::engine
 )
+
+add_executable(primitives_demo
+    primitives/main.cpp
+)
+target_link_libraries(primitives_demo
+    PRIVATE
+        engine::engine
+)

@@ -1,18 +1,22 @@
 #ifndef ENGINE_ENGINE_H_
 #define ENGINE_ENGINE_H_
 
-/**
- * @file engine.h
- * @brief Main umbrella header for the Agentic Game Engine.
- *
- * Downstream projects embedding this engine as a submodule can include this single
- * header to access primary engine facilities.
- */
-
 #include "engine/core/assert.h"
 #include "engine/core/base.h"
 #include "engine/core/log.h"
 #include "engine/core/version.h"
 #include "engine/platform/window.h"
+#include "engine/renderer/buffer.h"
+#include "engine/renderer/color.h"
+#include "engine/renderer/primitive_renderer.h"
+#include "engine/renderer/render_command.h"
+#include "engine/renderer/shader.h"
+#include "engine/renderer/vertex_array.h"
+
+namespace engine {
+
+// Global engine initialization and lifecycle hooks can be placed here.
+
+}  // namespace engine
 
 #endif  // ENGINE_ENGINE_H_

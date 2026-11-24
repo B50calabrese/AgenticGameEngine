@@ -7,6 +7,7 @@ Architecture Decision Records capture important technical and design decisions, 
 * [0001 - Record Architecture Decisions](file:///home/antonio/code/AgenticGameEngine/docs/adr/0001-record-architecture-decisions.md)
 * [0002 - Submodule-Friendly Modern CMake and Makefile Architecture](file:///home/antonio/code/AgenticGameEngine/docs/adr/0002-submodule-friendly-cmake-and-makefile.md)
 * [0003 - Abstract Window Interface and GLFW Backend](file:///home/antonio/code/AgenticGameEngine/docs/adr/0003-abstract-window-interface-and-glfw-backend.md)
+* [0004 - 2D Rendering Primitives & Hardware Abstraction Layer](file:///home/antonio/code/AgenticGameEngine/docs/adr/0004-rendering-primitives-and-hardware-abstraction.md)
 
 ## ADR Workflow
 

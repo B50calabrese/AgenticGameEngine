@@ -15,8 +15,9 @@ This document tracks all project milestones, active epics, task states, and cros
 - [ ] **Milestone 1: Core Foundation & Build System**
   - [x] Submodule-friendly CMake configuration with top-level `Makefile` (`BUILD-01`, `BUILD-02`)
   - [x] Core versioning, logging, assertion macros, and Google Test smoke suite
-  - [ ] Platform abstraction layer (windowing & OpenGL context via GLFW)
-  - [ ] Core math primitives (Vector2, Vector3, Matrix4) and general transform hierarchy
+  - [x] Platform abstraction layer (windowing & OpenGL context via GLFW) (`PLAT-01`)
+  - [x] 2D rendering primitives, hardware abstraction layer (HAL), and interactive demo (`REND-01`)
+  - [ ] Core math primitives (Vector2, Vector3, Matrix4) and general transform hierarchy (`CORE-01`)
 - [ ] **Milestone 2: Entity Component System (ECS)**
   - [ ] Data-oriented contiguous component storage
   - [ ] Entity manager and recycled entity IDs
@@ -44,6 +45,7 @@ This document tracks all project milestones, active epics, task states, and cros
 | `BUILD-02` | Configure submodule-friendly root CMakeLists.txt | Systems / Coding | `DONE` | `BUILD-01` |
 | `WIKI-01` | Formalize living Wiki architecture & continuous documentation invariant | Docs / Orchestrator | `DONE` | `BUILD-02` |
 | `PLAT-01` | Implement abstract window interface and GLFW backend | Systems / Coding | `DONE` | `BUILD-02` |
+| `REND-01` | Implement 2D rendering primitives, HAL (buffers, VAO, shader), and primitives demo | Systems / Coding | `DONE` | `PLAT-01` |
 | `CORE-01` | Implement core math primitives (Vector2, Vector3, Matrix4) | Systems / Coding | `TODO` | `BUILD-02` |
 
 *Status definitions: `TODO`, `IN_PROGRESS`, `REVIEW`, `DONE`, `BLOCKED`.*
@@ -53,6 +55,20 @@ This document tracks all project milestones, active epics, task states, and cros
 ## 3. Session Handoff Log
 
 Use this section to record progress at the end of each session so future sessions resume with zero ambiguity.
+
+### Session: 2026-11-24 (Session 4 - 2D Rendering Primitives & Hardware Abstraction Layer)
+* **Goal**: Design and build hardware-accelerated 2D rendering primitives (quads, triangles, lines, circles, rect outlines), low-level HAL (VertexBuffer, IndexBuffer, VertexArray, Shader, RenderCommand), and an interactive showcase demo.
+* **Completed**:
+  * Vendored GLAD OpenGL loader under `thirdparty/glad` with compiler warning suppression (`-w`).
+  * Implemented public clean headers under `include/engine/renderer/`: `color.h`, `buffer.h`, `vertex_array.h`, `shader.h`, `render_command.h`, and `primitive_renderer.h`.
+  * Implemented OpenGL backend in `src/engine/renderer/`: `opengl_buffer.cpp`, `opengl_vertex_array.cpp`, `opengl_shader.cpp`, `render_command.cpp`, and `primitive_renderer.cpp`.
+  * Built unified data-oriented 2D batching engine supporting colored quads, rotated quads, triangles, arbitrary thickness lines, and circles with zero per-frame heap allocations.
+  * Added unit test suite in `tests/renderer_test.cpp` (all 15/15 tests passing across engine).
+  * Built rich showcase demo `demos/primitives/main.cpp` with `make primitives-demo` (runs on hardware NVIDIA context with headless `--frames` support).
+  * Authored living wiki page [docs/subsystems/renderer.md](docs/subsystems/renderer.md) and ADR [docs/adr/0004-rendering-primitives-and-hardware-abstraction.md](docs/adr/0004-rendering-primitives-and-hardware-abstraction.md).
+* **Immediate Next Steps**:
+  1. Commit and push rendering primitives subsystem to GitHub.
+  2. Proceed to `CORE-01` (Core math primitives: Vector2, Vector3, Matrix4).
 
 ### Session: 2026-11-23 (Session 3 - Living Wiki Architecture & Documentation Invariant)
 * **Goal**: Establish repository documentation as an active, living wiki and enforce documentation invariant across all agents.

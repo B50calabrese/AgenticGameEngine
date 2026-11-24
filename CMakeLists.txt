@@ -69,6 +69,12 @@ add_library(engine STATIC
     src/engine/core/log.cpp
     src/engine/core/version.cpp
     src/engine/platform/glfw_window.cpp
+    src/engine/renderer/opengl_buffer.cpp
+    src/engine/renderer/opengl_vertex_array.cpp
+    src/engine/renderer/opengl_shader.cpp
+    src/engine/renderer/render_command.cpp
+    src/engine/renderer/primitive_renderer.cpp
+    thirdparty/glad/src/glad.c
 )
 
 # Aliasing allows downstream submodule consumers and internal targets to use:
@@ -84,6 +90,7 @@ target_include_directories(engine
         $<INSTALL_INTERFACE:include>
     PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/src
+        ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/glad/include
 )
 
 # Compiler warnings
@@ -92,6 +99,9 @@ if(MSVC)
 else()
     target_compile_options(engine PRIVATE -Wall -Wextra -Wpedantic)
 endif()
+
+# Suppress compiler warnings for third-party GLAD C loader
+set_source_files_properties(thirdparty/glad/src/glad.c PROPERTIES COMPILE_OPTIONS "-w")
 
 # Linking dependencies
 if(TARGET OpenGL::GL)
