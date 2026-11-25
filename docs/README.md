@@ -16,6 +16,7 @@ docs/
 │   └── cross_platform.md          # Platform abstraction principles
 ├── subsystems/                    # Living documentation for each subsystem
 │   ├── core.md                    # Core utilities, logging, version, assertions
+│   ├── math.md                    # Linear algebra, Vector2/3/4, Matrix4, Transform
 │   ├── platform.md                # Window abstraction, events, context lifecycle
 │   ├── renderer.md                # Hardware Abstraction Layer & 2D Primitive Batching
 │   ├── ecs.md                     # Entity Component System (Upcoming)
@@ -31,7 +32,8 @@ docs/
     ├── 0001-record-architecture-decisions.md
     ├── 0002-submodule-friendly-cmake-and-makefile.md
     ├── 0003-abstract-window-interface-and-glfw-backend.md
-    └── 0004-rendering-primitives-and-hardware-abstraction.md
+    ├── 0004-rendering-primitives-and-hardware-abstraction.md
+    └── 0005-linear-algebra-and-transform-primitives.md
 ```
 
 ---

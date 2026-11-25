@@ -61,27 +61,28 @@ int main(int argc, char** argv) {
         engine::renderer::Color(0.10f, 0.12f, 0.16f, 1.0f));
     engine::renderer::RenderCommand::Clear();
 
-    // 2. Begin 2D primitive batch (960x540 screen coordinate space)
+    // 2. Begin 2D primitive batch with native Matrix4 orthographic projection
     engine::renderer::PrimitiveRenderer::ResetStats();
-    engine::renderer::PrimitiveRenderer::BeginBatch(
-        static_cast<float>(window->GetWidth()),
-        static_cast<float>(window->GetHeight()),
-        /*y_down=*/false);
+    auto ortho = engine::math::Matrix4::Orthographic(
+        0.0f, static_cast<float>(window->GetWidth()),
+        0.0f, static_cast<float>(window->GetHeight()),
+        -1.0f, 1.0f);
+    engine::renderer::PrimitiveRenderer::BeginBatch(ortho);
 
     // Grid lines / background axes
     engine::renderer::PrimitiveRenderer::DrawLine(
-        0.0f, 270.0f, 960.0f, 270.0f,
+        engine::math::Vector2(0.0f, 270.0f), engine::math::Vector2(960.0f, 270.0f),
         engine::renderer::Color(0.18f, 0.22f, 0.28f, 1.0f), 2.0f);
     engine::renderer::PrimitiveRenderer::DrawLine(
-        480.0f, 0.0f, 480.0f, 540.0f,
+        engine::math::Vector2(480.0f, 0.0f), engine::math::Vector2(480.0f, 540.0f),
         engine::renderer::Color(0.18f, 0.22f, 0.28f, 1.0f), 2.0f);
 
     // Left Quadrant: Static Quads & Outlines
     engine::renderer::PrimitiveRenderer::DrawQuad(
-        60.0f, 320.0f, 140.0f, 100.0f,
+        engine::math::Vector2(60.0f, 320.0f), engine::math::Vector2(140.0f, 100.0f),
         engine::renderer::Color::Red());
     engine::renderer::PrimitiveRenderer::DrawQuad(
-        220.0f, 320.0f, 140.0f, 100.0f,
+        engine::math::Vector2(220.0f, 320.0f), engine::math::Vector2(140.0f, 100.0f),
         engine::renderer::Color::Green());
     engine::renderer::PrimitiveRenderer::DrawRectOutline(
         50.0f, 310.0f, 320.0f, 120.0f,
@@ -90,18 +91,18 @@ int main(int argc, char** argv) {
     // Center: Animated Rotated Quad
     rotation += 0.02f;
     engine::renderer::PrimitiveRenderer::DrawRotatedQuad(
-        480.0f, 270.0f, 120.0f, 120.0f, rotation,
-        engine::renderer::Color::Cyan());
+        engine::math::Vector2(480.0f, 270.0f), engine::math::Vector2(120.0f, 120.0f),
+        rotation, engine::renderer::Color::Cyan());
     engine::renderer::PrimitiveRenderer::DrawRotatedQuad(
-        480.0f, 270.0f, 80.0f, 80.0f, -rotation * 1.5f,
-        engine::renderer::Color::Magenta());
+        engine::math::Vector2(480.0f, 270.0f), engine::math::Vector2(80.0f, 80.0f),
+        -rotation * 1.5f, engine::renderer::Color::Magenta());
 
     // Right Quadrant: Circles
     engine::renderer::PrimitiveRenderer::DrawCircle(
-        750.0f, 370.0f, 50.0f,
+        engine::math::Vector2(750.0f, 370.0f), 50.0f,
         engine::renderer::Color::Orange(), 40);
     engine::renderer::PrimitiveRenderer::DrawCircle(
-        830.0f, 320.0f, 30.0f,
+        engine::math::Vector2(830.0f, 320.0f), 30.0f,
         engine::renderer::Color::Blue(), 32);
 
     // Bottom Left: Geometric Triangles

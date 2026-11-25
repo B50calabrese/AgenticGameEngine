@@ -6,6 +6,8 @@
 
 #include "engine/core/assert.h"
 #include "engine/core/log.h"
+#include "engine/math/matrix4.h"
+#include "engine/math/vector2.h"
 #include "engine/renderer/render_command.h"
 #include "engine/renderer/shader.h"
 
@@ -311,6 +313,42 @@ void PrimitiveRenderer::DrawCircle(float center_x, float center_y, float radius,
 
     DrawTriangle(center_x, center_y, x1, y1, x2, y2, color);
   }
+}
+
+void PrimitiveRenderer::BeginBatch(const engine::math::Matrix4& view_projection) {
+  BeginBatch(view_projection.Data());
+}
+
+void PrimitiveRenderer::DrawQuad(const engine::math::Vector2& position,
+                                 const engine::math::Vector2& size,
+                                 const Color& color) {
+  DrawQuad(position.x, position.y, size.x, size.y, color);
+}
+
+void PrimitiveRenderer::DrawRotatedQuad(const engine::math::Vector2& position,
+                                        const engine::math::Vector2& size,
+                                        float rotation_radians,
+                                        const Color& color) {
+  DrawRotatedQuad(position.x, position.y, size.x, size.y, rotation_radians, color);
+}
+
+void PrimitiveRenderer::DrawTriangle(const engine::math::Vector2& p1,
+                                     const engine::math::Vector2& p2,
+                                     const engine::math::Vector2& p3,
+                                     const Color& color) {
+  DrawTriangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, color);
+}
+
+void PrimitiveRenderer::DrawLine(const engine::math::Vector2& start,
+                                 const engine::math::Vector2& end,
+                                 const Color& color, float line_width) {
+  DrawLine(start.x, start.y, end.x, end.y, color, line_width);
+}
+
+void PrimitiveRenderer::DrawCircle(const engine::math::Vector2& center,
+                                   float radius, const Color& color,
+                                   std::uint32_t segments) {
+  DrawCircle(center.x, center.y, radius, color, segments);
 }
 
 const PrimitiveRenderer::Statistics& PrimitiveRenderer::GetStats() {

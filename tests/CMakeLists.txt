@@ -25,7 +25,17 @@ target_link_libraries(renderer_test
         GTest::gtest_main
 )
 
+add_executable(math_test
+    math_test.cpp
+)
+target_link_libraries(math_test
+    PRIVATE
+        engine::engine
+        GTest::gtest_main
+)
+
 include(GoogleTest)
 gtest_discover_tests(core_test)
 gtest_discover_tests(window_test)
 gtest_discover_tests(renderer_test)
+gtest_discover_tests(math_test)

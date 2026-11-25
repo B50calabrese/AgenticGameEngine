@@ -7,6 +7,11 @@
 
 #include "engine/renderer/color.h"
 
+namespace engine::math {
+struct Vector2;
+class Matrix4;
+}  // namespace engine::math
+
 namespace engine::renderer {
 
 /**
@@ -55,6 +60,11 @@ class PrimitiveRenderer {
   static void BeginBatch(const float* projection_matrix);
 
   /**
+   * @brief Begins a batch using an engine Matrix4 view-projection matrix.
+   */
+  static void BeginBatch(const engine::math::Matrix4& view_projection);
+
+  /**
    * @brief Finishes and flushes the current batch.
    */
   static void EndBatch();
@@ -71,6 +81,8 @@ class PrimitiveRenderer {
    */
   static void DrawQuad(float x, float y, float width, float height,
                        const Color& color);
+  static void DrawQuad(const engine::math::Vector2& position,
+                       const engine::math::Vector2& size, const Color& color);
 
   /**
    * @brief Draws a solid colored quad rotated around its center.
@@ -84,17 +96,26 @@ class PrimitiveRenderer {
    */
   static void DrawRotatedQuad(float x, float y, float width, float height,
                               float rotation_radians, const Color& color);
+  static void DrawRotatedQuad(const engine::math::Vector2& position,
+                              const engine::math::Vector2& size,
+                              float rotation_radians, const Color& color);
 
   /**
    * @brief Draws a solid colored triangle.
    */
   static void DrawTriangle(float x1, float y1, float x2, float y2,
                            float x3, float y3, const Color& color);
+  static void DrawTriangle(const engine::math::Vector2& p1,
+                           const engine::math::Vector2& p2,
+                           const engine::math::Vector2& p3, const Color& color);
 
   /**
    * @brief Draws a line between two points.
    */
   static void DrawLine(float x1, float y1, float x2, float y2,
+                       const Color& color, float line_width = 1.0f);
+  static void DrawLine(const engine::math::Vector2& start,
+                       const engine::math::Vector2& end,
                        const Color& color, float line_width = 1.0f);
 
   /**
@@ -107,6 +128,8 @@ class PrimitiveRenderer {
    * @brief Draws a filled or outlined regular circle.
    */
   static void DrawCircle(float center_x, float center_y, float radius,
+                         const Color& color, std::uint32_t segments = 32);
+  static void DrawCircle(const engine::math::Vector2& center, float radius,
                          const Color& color, std::uint32_t segments = 32);
 
   // --- Statistics ---

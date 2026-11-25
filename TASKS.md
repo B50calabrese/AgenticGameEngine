@@ -12,16 +12,16 @@ This document tracks all project milestones, active epics, task states, and cros
   - [x] Set up operational skills (`agent-hiring`, `task-breakdown`, `session-tracking`, `google-cpp-style`, `code-optimization`, `engine-documentation`)
   - [x] Establish ADR directory and initial template
   - [x] Initialize repository structure (`include/`, `src/`, `demos/`, `tests/`, `Makefile`, `CMakeLists.txt`)
-- [ ] **Milestone 1: Core Foundation & Build System**
+- [x] **Milestone 1: Core Foundation & Build System**
   - [x] Submodule-friendly CMake configuration with top-level `Makefile` (`BUILD-01`, `BUILD-02`)
   - [x] Core versioning, logging, assertion macros, and Google Test smoke suite
   - [x] Platform abstraction layer (windowing & OpenGL context via GLFW) (`PLAT-01`)
   - [x] 2D rendering primitives, hardware abstraction layer (HAL), and interactive demo (`REND-01`)
-  - [ ] Core math primitives (Vector2, Vector3, Matrix4) and general transform hierarchy (`CORE-01`)
+  - [x] Core math primitives (Vector2, Vector3, Vector4, Matrix4, Transform) (`CORE-01`)
 - [ ] **Milestone 2: Entity Component System (ECS)**
-  - [ ] Data-oriented contiguous component storage
-  - [ ] Entity manager and recycled entity IDs
-  - [ ] Registry coordinator with view iteration
+  - [ ] Data-oriented contiguous component storage (`ECS-01`)
+  - [ ] Entity manager and recycled entity IDs (`ECS-02`)
+  - [ ] Registry coordinator with view iteration (`ECS-03`)
 - [ ] **Milestone 3: 2D/2.5D Batch Renderer**
   - [ ] Shader abstraction and OpenGL pipeline
   - [ ] `RenderQueue` with Z-sorting and automatic texture batching
@@ -46,7 +46,8 @@ This document tracks all project milestones, active epics, task states, and cros
 | `WIKI-01` | Formalize living Wiki architecture & continuous documentation invariant | Docs / Orchestrator | `DONE` | `BUILD-02` |
 | `PLAT-01` | Implement abstract window interface and GLFW backend | Systems / Coding | `DONE` | `BUILD-02` |
 | `REND-01` | Implement 2D rendering primitives, HAL (buffers, VAO, shader), and primitives demo | Systems / Coding | `DONE` | `PLAT-01` |
-| `CORE-01` | Implement core math primitives (Vector2, Vector3, Matrix4) | Systems / Coding | `TODO` | `BUILD-02` |
+| `CORE-01` | Implement core math primitives (Vector2, Vector3, Matrix4, Transform) | Systems / Coding | `DONE` | `BUILD-02` |
+| `ECS-01`  | Implement data-oriented contiguous component storage (SparseSet) | Systems / Coding | `TODO` | `CORE-01` |
 
 *Status definitions: `TODO`, `IN_PROGRESS`, `REVIEW`, `DONE`, `BLOCKED`.*
 
@@ -55,6 +56,19 @@ This document tracks all project milestones, active epics, task states, and cros
 ## 3. Session Handoff Log
 
 Use this section to record progress at the end of each session so future sessions resume with zero ambiguity.
+
+### Session: 2026-11-24 (Session 5 - Core Math Primitives & Milestone 1 Completion)
+* **Goal**: Implement decoupled, vendor-isolated linear algebra structures (`Vector2`, `Vector3`, `Vector4`, `Matrix4`, `Transform`, `MathUtils`) and complete Milestone 1.
+* **Completed**:
+  * Implemented `include/engine/math/`: `math_utils.h`, `vector2.h`, `vector3.h`, `vector4.h`, `matrix4.h`, and `transform.h`.
+  * Implemented `src/engine/math/`: `matrix4.cpp` (column-major, matrix multiplication, transform point/dir, 4x4 cofactor inversion, determinant, Orthographic, Perspective, LookAt) and `transform.cpp`.
+  * Integrated math types with `PrimitiveRenderer` (`BeginBatch(Matrix4)`, `DrawQuad(Vector2, Vector2, Color)`, etc.) and updated primitives demo.
+  * Added unit test suite `tests/math_test.cpp` with 16 comprehensive tests (all 31/31 tests passing across engine).
+  * Authored living wiki page [docs/subsystems/math.md](docs/subsystems/math.md) and ADR [docs/adr/0005-linear-algebra-and-transform-primitives.md](docs/adr/0005-linear-algebra-and-transform-primitives.md).
+  * Completed **Milestone 1 (Core Foundation & Build System)** in full.
+* **Immediate Next Steps**:
+  1. Commit and push math subsystem to GitHub.
+  2. Advance to **Milestone 2 (Entity Component System)** with `ECS-01` (SparseSet component storage).
 
 ### Session: 2026-11-24 (Session 4 - 2D Rendering Primitives & Hardware Abstraction Layer)
 * **Goal**: Design and build hardware-accelerated 2D rendering primitives (quads, triangles, lines, circles, rect outlines), low-level HAL (VertexBuffer, IndexBuffer, VertexArray, Shader, RenderCommand), and an interactive showcase demo.

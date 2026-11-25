@@ -68,6 +68,8 @@ endif()
 add_library(engine STATIC
     src/engine/core/log.cpp
     src/engine/core/version.cpp
+    src/engine/math/matrix4.cpp
+    src/engine/math/transform.cpp
     src/engine/platform/glfw_window.cpp
     src/engine/renderer/opengl_buffer.cpp
     src/engine/renderer/opengl_vertex_array.cpp
