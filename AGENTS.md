@@ -82,3 +82,7 @@ The workspace is maintained by a specialized, hyper-focused agent suite:
    * Major architectural decisions (subsystem boundaries, library additions, API overhauls) must be documented as an ADR in `docs/adr/`.
 5. **Agent Hiring Protocol**:
    * Any new agent persona must be processed through the `hr` agent and requires explicit human approval before creation.
+6. **Git Push Review Protocol**:
+   * **Strict Mandate**: Never run `git push` to remote without explicit user review and go-ahead.
+   * After implementing, testing, authoring wiki docs, and creating a local commit, always present the commit hash, changed files, and validation results to the user for review first.
+   * Only execute `git push` when the user explicitly instructs to do so.
