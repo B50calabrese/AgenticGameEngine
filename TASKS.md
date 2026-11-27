@@ -30,10 +30,10 @@ This document tracks all project milestones, active epics, task states, and cros
   - [x] 2D UI primitives, hit-testing (hover/click/drag), and layout helpers (`UI-01`)
   - [x] Scene / Game State Manager & Tweening/Easing library (`CORE-02`)
   - [x] Lua state integration and C++ bindings (`LUA-01`)
-- [ ] **Milestone 4: Entity Component System (ECS)**
-  - [ ] Data-oriented contiguous component storage (`SparseSet`) (`ECS-01`)
-  - [ ] Entity manager with generational IDs & recycling (`ECS-02`)
-  - [ ] Registry coordinator, `View<...>()`, and deferred destruction (`ECS-03`)
+- [x] **Milestone 4: Entity Component System (ECS)**
+  - [x] Data-oriented contiguous component storage (`SparseSet`) (`ECS-01`)
+  - [x] Entity manager with generational IDs & recycling (`ECS-02`)
+  - [x] Registry coordinator, `View<...>()`, and deferred destruction (`ECS-03`)
 - [ ] **Milestone 5: Audio & Save State (Serialization)**
   - [ ] Audio engine abstraction for SFX & music playback (`AUD-01`)
   - [ ] Serialization & Save State system for runs, settings, and scenes (`SER-01`)
@@ -68,9 +68,9 @@ This document tracks all project milestones, active epics, task states, and cros
 | `REND-04` | Implement Font & `TextRenderer` (`stb_truetype` / FreeType) | Systems / Coding | `DONE` | `REND-03` |
 | `UI-01`   | Implement 2D UI primitives, mouse hit-testing (hover/click/drag), and layout | Systems / Coding | `DONE` | `REND-04`, `INP-01` |
 | `CORE-02` | Implement Scene/State Manager and Tweening/Easing library | Systems / Coding | `DONE` | `CORE-01` |
-| `ECS-01`  | Implement data-oriented contiguous component storage (`SparseSet`) | Systems / Coding | `TODO` | `CORE-01` |
-| `ECS-02`  | Implement Entity Manager with generational IDs & recycling | Systems / Coding | `TODO` | `ECS-01` |
-| `ECS-03`  | Implement Registry coordinator, `View<...>()`, and deferred destruction | Systems / Coding | `TODO` | `ECS-02` |
+| `ECS-01`  | Implement data-oriented contiguous component storage (`SparseSet`) | Systems / Coding | `DONE` | `CORE-01` |
+| `ECS-02`  | Implement Entity Manager with generational IDs & recycling | Systems / Coding | `DONE` | `ECS-01` |
+| `ECS-03`  | Implement Registry coordinator, `View<...>()`, and deferred destruction | Systems / Coding | `DONE` | `ECS-02` |
 | `AUD-01`  | Implement Audio engine abstraction (SFX & music playback) | Systems / Coding | `TODO` | `BUILD-02` |
 | `SER-01`  | Implement Serialization & Save State system (JSON/binary) | Systems / Coding | `TODO` | `CORE-01` |
 | `LUA-01`  | Implement Lua state integration and C++ bindings | Systems / Coding | `DONE` | `CORE-01`, `UI-01` |

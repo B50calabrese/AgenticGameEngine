@@ -88,6 +88,15 @@ target_link_libraries(scene_tween_test
         GTest::gtest_main
 )
 
+add_executable(ecs_test
+    ecs_test.cpp
+)
+target_link_libraries(ecs_test
+    PRIVATE
+        engine::engine
+        GTest::gtest_main
+)
+
 include(GoogleTest)
 gtest_discover_tests(core_test)
 gtest_discover_tests(window_test)
@@ -99,3 +108,4 @@ gtest_discover_tests(font_test)
 gtest_discover_tests(ui_test)
 gtest_discover_tests(lua_test)
 gtest_discover_tests(scene_tween_test)
+gtest_discover_tests(ecs_test)

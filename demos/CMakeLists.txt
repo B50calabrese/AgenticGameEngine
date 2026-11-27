@@ -89,3 +89,12 @@ target_link_libraries(scene_demo
     PRIVATE
         engine::engine
 )
+
+# ECS demo
+add_executable(ecs_demo
+    ecs_demo/main.cpp
+)
+target_link_libraries(ecs_demo
+    PRIVATE
+        engine::engine
+)

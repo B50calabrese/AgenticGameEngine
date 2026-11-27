@@ -58,6 +58,9 @@ lua-demo: build
 scene-demo: build
 	./$(BUILD_DIR)/demos/scene_demo
 
+ecs-demo: build
+	./$(BUILD_DIR)/demos/ecs_demo
+
 format:
 	@if command -v clang-format >/dev/null 2>&1; then \
 		find include src tests demos -name "*.h" -o -name "*.cpp" | xargs clang-format -i; \
