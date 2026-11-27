@@ -52,6 +52,15 @@ target_link_libraries(texture_test
         GTest::gtest_main
 )
 
+add_executable(font_test
+    font_test.cpp
+)
+target_link_libraries(font_test
+    PRIVATE
+        engine::engine
+        GTest::gtest_main
+)
+
 include(GoogleTest)
 gtest_discover_tests(core_test)
 gtest_discover_tests(window_test)
@@ -59,3 +68,4 @@ gtest_discover_tests(renderer_test)
 gtest_discover_tests(math_test)
 gtest_discover_tests(input_test)
 gtest_discover_tests(texture_test)
+gtest_discover_tests(font_test)

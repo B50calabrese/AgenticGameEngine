@@ -46,6 +46,9 @@ platformer: build
 textures-demo: build
 	./$(BUILD_DIR)/demos/textures_demo
 
+font-demo: build
+	./$(BUILD_DIR)/demos/font_demo
+
 format:
 	@if command -v clang-format >/dev/null 2>&1; then \
 		find include src tests demos -name "*.h" -o -name "*.cpp" | xargs clang-format -i; \
