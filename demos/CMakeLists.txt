@@ -62,3 +62,12 @@ target_link_libraries(font_demo
     PRIVATE
         engine::engine
 )
+
+# UI demo
+add_executable(ui_demo
+    ui_demo/main.cpp
+)
+target_link_libraries(ui_demo
+    PRIVATE
+        engine::engine
+)

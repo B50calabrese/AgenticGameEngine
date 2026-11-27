@@ -49,6 +49,9 @@ textures-demo: build
 font-demo: build
 	./$(BUILD_DIR)/demos/font_demo
 
+ui-demo: build
+	./$(BUILD_DIR)/demos/ui_demo
+
 format:
 	@if command -v clang-format >/dev/null 2>&1; then \
 		find include src tests demos -name "*.h" -o -name "*.cpp" | xargs clang-format -i; \

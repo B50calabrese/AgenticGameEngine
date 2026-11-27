@@ -20,6 +20,7 @@ docs/
 │   ├── math.md                    # Linear algebra, Vector2/3/4, Matrix4, Transform
 │   ├── platform.md                # Window abstraction, events, context lifecycle
 │   ├── renderer.md                # Hardware Abstraction Layer & 2D Primitive Batching
+│   ├── ui.md                      # Immediate-mode 2D UI, Hit-Testing & Textured Widgets
 │   ├── ecs.md                     # Entity Component System (Upcoming)
 │   ├── physics.md                 # 2D Physics & Collision (Upcoming)
 │   └── scripting.md               # Lua Integration & Bindings (Upcoming)

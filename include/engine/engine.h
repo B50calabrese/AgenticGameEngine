@@ -25,6 +25,8 @@
 #include "engine/renderer/shader.h"
 #include "engine/renderer/texture.h"
 #include "engine/renderer/vertex_array.h"
+#include "engine/ui/rect.h"
+#include "engine/ui/ui_context.h"
 
 namespace engine {
 

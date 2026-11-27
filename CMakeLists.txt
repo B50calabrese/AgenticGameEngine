@@ -83,6 +83,7 @@ add_library(engine STATIC
     src/engine/renderer/font.cpp
     src/engine/renderer/stb_image.cpp
     src/engine/renderer/stb_truetype.cpp
+    src/engine/ui/ui_context.cpp
     thirdparty/glad/src/glad.c
 )
 
@@ -115,6 +116,7 @@ set_source_files_properties(
     thirdparty/glad/src/glad.c
     src/engine/renderer/stb_image.cpp
     src/engine/renderer/stb_truetype.cpp
+    src/engine/ui/ui_context.cpp
     PROPERTIES COMPILE_OPTIONS "-w"
 )
 

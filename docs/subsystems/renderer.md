@@ -50,6 +50,7 @@ Public headers live exclusively in `include/engine/renderer/`:
 | `render_command.h` | `RenderCommand` | Low-level context initialization (GLAD), clear color, viewport, and indexed/line draw execution. |
 | `primitive_renderer.h`| `PrimitiveRenderer` | Batched 2D geometry & textured quad renderer (up to 16 texture slots per batch) with frame statistics. |
 | `render_queue.h` | `RenderQueue` | Z-sorted submission queue that orders draw calls back-to-front before flushing through `PrimitiveRenderer`. |
+| `font.h` | `Font`, `GlyphMetrics` | TrueType font loading (`stb_truetype`) and bitmap/rotated string rendering (`DrawString`). |
 
 ---
 
@@ -88,15 +89,43 @@ engine::renderer::PrimitiveRenderer::DrawLine(0.0f, 0.0f, 960.0f, 540.0f, engine
 engine::renderer::PrimitiveRenderer::EndBatch();
 ```
 
+### Textures, Z-Sorted RenderQueue & Font Rendering
+
+```cpp
+// Load a texture from disk or create a procedural texture
+auto sprite = engine::renderer::Texture2D::Create("assets/textures/card.png");
+
+// Load a TrueType font
+auto font = engine::renderer::Font::Load("assets/fonts/Roboto-Regular.ttf", 24);
+
+// Submit Z-ordered quads to RenderQueue (back-to-front)
+engine::renderer::RenderQueue queue;
+queue.SubmitQuad({100.0f, 100.0f}, {200.0f, 150.0f},
+                 engine::renderer::Color::DarkGray(), /*z_order=*/0.0f);
+queue.SubmitTexturedQuad({120.0f, 120.0f}, {128.0f, 128.0f}, sprite,
+                         engine::renderer::Color::White(), /*z_order=*/1.0f);
+queue.Flush(engine::math::Matrix4::Orthographic(0.0f, 960.0f, 0.0f, 540.0f, -1.0f, 1.0f));
+
+// Draw horizontal or rotated text
+engine::renderer::PrimitiveRenderer::BeginBatch(960.0f, 540.0f);
+font->DrawString("Score: 100", {20.0f, 500.0f}, engine::renderer::Color::White());
+font->DrawString("Rotated!", {480.0f, 270.0f}, engine::renderer::Color::Yellow(), 0.25f);
+engine::renderer::PrimitiveRenderer::EndBatch();
+```
+
 ---
 
 ## 5. Demo Validation
 
-Run the primitives demo:
+Run the renderer demos:
 ```bash
 make primitives-demo
+make textures-demo
+make font-demo
 ```
 For automated headless testing:
 ```bash
 ./build/demos/primitives_demo --frames 60
+./build/demos/textures_demo --frames 10
+./build/demos/font_demo --frames 10
 ```
