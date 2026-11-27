@@ -41,6 +41,27 @@ target_link_libraries(platformer_demo
 add_executable(textures_demo
     textures/main.cpp
 )
+
+target_link_libraries(textures_demo
+    PRIVATE
+        engine::engine
+)
+
+add_executable(font_demo
+    font_demo/main.cpp
+)
+
+target_link_libraries(font_demo
+    PRIVATE
+        engine::engine
+)
+    textures/main.cpp
+)
+add_executable(font_demo
+    font_demo/main.cpp
+)
+    textures/main.cpp
+)
 target_link_libraries(textures_demo
     PRIVATE
         engine::engine

@@ -81,6 +81,7 @@ add_library(engine STATIC
     src/engine/renderer/render_command.cpp
     src/engine/renderer/render_queue.cpp
     src/engine/renderer/stb_image.cpp
+    src/engine/renderer/stb_truetype.cpp
     thirdparty/glad/src/glad.c
 )
 
@@ -112,6 +113,7 @@ endif()
 set_source_files_properties(
     thirdparty/glad/src/glad.c
     src/engine/renderer/stb_image.cpp
+    src/engine/renderer/stb_truetype.cpp
     PROPERTIES COMPILE_OPTIONS "-w"
 )
 
