@@ -71,7 +71,8 @@ The workspace is maintained by a specialized, hyper-focused agent suite:
 
 1. **Task-Driven Work**:
    * Every non-trivial operation must be tracked in [TASKS.md](TASKS.md).
-   * Tasks must follow the Work Breakdown Structure: **Contract/Headers First $\rightarrow$ Implementation $\rightarrow$ Tests & Validation $\rightarrow$ Wiki Documentation**.
+   * Tasks must follow the Work Breakdown Structure: **Contract/Headers First $\rightarrow$ Implementation $\rightarrow$ Tests & Validation $\rightarrow$ Interactive Demo $\rightarrow$ Wiki Documentation**.
+   * **Demo-Per-Feature Rule**: Every new iteration of the engine that adds user-facing or subsystem functionality must include a runnable demo in `demos/` (with `--frames N` headless support) and a corresponding `Makefile` target.
 2. **Living Wiki & Documentation Invariant**:
    * **Mandatory Invariant**: The repository's `docs/` directory functions as an active, living **Project Wiki**.
    * **Definition of Done**: No major architectural change, new subsystem, public API evolution, or build system modification is considered complete until its corresponding wiki article in `docs/` is authored or synchronized, and linked to the master index in `docs/README.md`.

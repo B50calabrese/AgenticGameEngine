@@ -26,9 +26,9 @@ This document tracks all project milestones, active epics, task states, and cros
   - [x] `Texture2D` abstraction & image loading (`REND-02`)
   - [x] Textured quad batching & `RenderQueue` with Z-sorting (`REND-03`)
   - [x] Font & `TextRenderer` for crisp UI, HUDs, and card text (`REND-04`)
-- [ ] **Milestone 3: UI, Scene/Tweening & Lua Core**
+- [x] **Milestone 3: UI, Scene/Tweening & Lua Core**
   - [x] 2D UI primitives, hit-testing (hover/click/drag), and layout helpers (`UI-01`)
-  - [ ] Scene / Game State Manager & Tweening/Easing library (`CORE-02`)
+  - [x] Scene / Game State Manager & Tweening/Easing library (`CORE-02`)
   - [x] Lua state integration and C++ bindings (`LUA-01`)
 - [ ] **Milestone 4: Entity Component System (ECS)**
   - [ ] Data-oriented contiguous component storage (`SparseSet`) (`ECS-01`)
@@ -67,7 +67,7 @@ This document tracks all project milestones, active epics, task states, and cros
 | `REND-03` | Implement textured quad batching & `RenderQueue` (Z-sorting, texture slots) | Systems / Coding | `DONE` | `REND-02` |
 | `REND-04` | Implement Font & `TextRenderer` (`stb_truetype` / FreeType) | Systems / Coding | `DONE` | `REND-03` |
 | `UI-01`   | Implement 2D UI primitives, mouse hit-testing (hover/click/drag), and layout | Systems / Coding | `DONE` | `REND-04`, `INP-01` |
-| `CORE-02` | Implement Scene/State Manager and Tweening/Easing library | Systems / Coding | `TODO` | `CORE-01` |
+| `CORE-02` | Implement Scene/State Manager and Tweening/Easing library | Systems / Coding | `DONE` | `CORE-01` |
 | `ECS-01`  | Implement data-oriented contiguous component storage (`SparseSet`) | Systems / Coding | `TODO` | `CORE-01` |
 | `ECS-02`  | Implement Entity Manager with generational IDs & recycling | Systems / Coding | `TODO` | `ECS-01` |
 | `ECS-03`  | Implement Registry coordinator, `View<...>()`, and deferred destruction | Systems / Coding | `TODO` | `ECS-02` |

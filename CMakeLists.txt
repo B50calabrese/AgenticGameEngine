@@ -68,6 +68,7 @@ endif()
 add_library(engine STATIC
     src/engine/core/clock.cpp
     src/engine/core/log.cpp
+    src/engine/core/scene_manager.cpp
     src/engine/core/version.cpp
     src/engine/input/input.cpp
     src/engine/math/matrix4.cpp

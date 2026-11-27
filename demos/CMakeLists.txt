@@ -80,3 +80,12 @@ target_link_libraries(lua_demo
     PRIVATE
         engine::engine
 )
+
+# Scene & Tweening demo
+add_executable(scene_demo
+    scene_demo/main.cpp
+)
+target_link_libraries(scene_demo
+    PRIVATE
+        engine::engine
+)
