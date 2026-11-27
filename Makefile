@@ -61,6 +61,12 @@ scene-demo: build
 ecs-demo: build
 	./$(BUILD_DIR)/demos/ecs_demo
 
+audio-demo: build
+	./$(BUILD_DIR)/demos/audio_demo
+
+save-demo: build
+	./$(BUILD_DIR)/demos/save_demo
+
 format:
 	@if command -v clang-format >/dev/null 2>&1; then \
 		find include src tests demos -name "*.h" -o -name "*.cpp" | xargs clang-format -i; \

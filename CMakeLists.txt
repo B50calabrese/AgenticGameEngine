@@ -66,6 +66,7 @@ endif()
 # 3. Engine Target Definition
 # -----------------------------------------------------------------------------
 add_library(engine STATIC
+    src/engine/audio/audio_engine.cpp
     src/engine/core/clock.cpp
     src/engine/core/log.cpp
     src/engine/core/scene_manager.cpp
@@ -85,6 +86,7 @@ add_library(engine STATIC
     src/engine/renderer/stb_image.cpp
     src/engine/renderer/stb_truetype.cpp
     src/engine/scripting/lua_state.cpp
+    src/engine/serialization/save_state.cpp
     src/engine/ui/ui_context.cpp
     thirdparty/glad/src/glad.c
 )
@@ -119,6 +121,7 @@ set_source_files_properties(
     src/engine/renderer/stb_image.cpp
     src/engine/renderer/stb_truetype.cpp
     src/engine/scripting/lua_state.cpp
+    src/engine/serialization/save_state.cpp
     src/engine/ui/ui_context.cpp
     PROPERTIES COMPILE_OPTIONS "-w"
 )

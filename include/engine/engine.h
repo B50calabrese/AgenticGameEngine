@@ -1,6 +1,7 @@
 #ifndef ENGINE_ENGINE_H_
 #define ENGINE_ENGINE_H_
 
+#include "engine/audio/audio_engine.h"
 #include "engine/core/assert.h"
 #include "engine/core/base.h"
 #include "engine/core/clock.h"
@@ -31,6 +32,7 @@
 #include "engine/renderer/texture.h"
 #include "engine/renderer/vertex_array.h"
 #include "engine/scripting/lua_state.h"
+#include "engine/serialization/save_state.h"
 #include "engine/ui/rect.h"
 #include "engine/ui/ui_context.h"
 

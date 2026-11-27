@@ -34,9 +34,9 @@ This document tracks all project milestones, active epics, task states, and cros
   - [x] Data-oriented contiguous component storage (`SparseSet`) (`ECS-01`)
   - [x] Entity manager with generational IDs & recycling (`ECS-02`)
   - [x] Registry coordinator, `View<...>()`, and deferred destruction (`ECS-03`)
-- [ ] **Milestone 5: Audio & Save State (Serialization)**
-  - [ ] Audio engine abstraction for SFX & music playback (`AUD-01`)
-  - [ ] Serialization & Save State system for runs, settings, and scenes (`SER-01`)
+- [x] **Milestone 5: Audio & Save State (Serialization)**
+  - [x] Audio engine abstraction for SFX & music playback (`AUD-01`)
+  - [x] Serialization & Save State system for runs, settings, and scenes (`SER-01`)
 - [ ] **Milestone 6: ECS Scripting & Hot-Reload**
   - [ ] Scriptable components, card/entity hooks, and hot-reload (`LUA-02`)
 - [ ] **Milestone 7: Developer & Debugging Tools**
@@ -71,8 +71,8 @@ This document tracks all project milestones, active epics, task states, and cros
 | `ECS-01`  | Implement data-oriented contiguous component storage (`SparseSet`) | Systems / Coding | `DONE` | `CORE-01` |
 | `ECS-02`  | Implement Entity Manager with generational IDs & recycling | Systems / Coding | `DONE` | `ECS-01` |
 | `ECS-03`  | Implement Registry coordinator, `View<...>()`, and deferred destruction | Systems / Coding | `DONE` | `ECS-02` |
-| `AUD-01`  | Implement Audio engine abstraction (SFX & music playback) | Systems / Coding | `TODO` | `BUILD-02` |
-| `SER-01`  | Implement Serialization & Save State system (JSON/binary) | Systems / Coding | `TODO` | `CORE-01` |
+| `AUD-01`  | Implement Audio engine abstraction (SFX & music playback) | Systems / Coding | `DONE` | `BUILD-02` |
+| `SER-01`  | Implement Serialization & Save State system (JSON/binary) | Systems / Coding | `DONE` | `CORE-01` |
 | `LUA-01`  | Implement Lua state integration and C++ bindings | Systems / Coding | `DONE` | `CORE-01`, `UI-01` |
 | `LUA-02`  | Implement scriptable components, lifecycle hooks, and hot-reload | Systems / Coding | `TODO` | `LUA-01` |
 | `DBG-01`  | Implement in-engine Developer Console / Command Bar | Systems / Coding | `TODO` | `UI-01`, `REND-04` |

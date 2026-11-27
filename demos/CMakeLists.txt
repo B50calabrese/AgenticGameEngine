@@ -98,3 +98,21 @@ target_link_libraries(ecs_demo
     PRIVATE
         engine::engine
 )
+
+# Audio demo
+add_executable(audio_demo
+    audio_demo/main.cpp
+)
+target_link_libraries(audio_demo
+    PRIVATE
+        engine::engine
+)
+
+# Save State demo
+add_executable(save_demo
+    save_demo/main.cpp
+)
+target_link_libraries(save_demo
+    PRIVATE
+        engine::engine
+)
