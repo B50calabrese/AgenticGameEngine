@@ -47,6 +47,9 @@ This document tracks all project milestones, active epics, task states, and cros
 | `PLAT-01` | Implement abstract window interface and GLFW backend | Systems / Coding | `DONE` | `BUILD-02` |
 | `REND-01` | Implement 2D rendering primitives, HAL (buffers, VAO, shader), and primitives demo | Systems / Coding | `DONE` | `PLAT-01` |
 | `CORE-01` | Implement core math primitives (Vector2, Vector3, Matrix4, Transform) | Systems / Coding | `DONE` | `BUILD-02` |
+| `INP-01`  | Implement polling Input system (`KeyCode`, `MouseButton`) and `Clock`/`Timestep` | Systems / Coding | `DONE` | `PLAT-01` |
+| `GAME-01` | Build interactive Breakout demo game (`demos/breakout`) | Coding | `DONE` | `INP-01`, `REND-01` |
+| `GAME-02` | Build interactive 2D Platformer demo game (`demos/platformer`) | Coding | `DONE` | `INP-01`, `REND-01` |
 | `ECS-01`  | Implement data-oriented contiguous component storage (SparseSet) | Systems / Coding | `TODO` | `CORE-01` |
 
 *Status definitions: `TODO`, `IN_PROGRESS`, `REVIEW`, `DONE`, `BLOCKED`.*
@@ -56,6 +59,18 @@ This document tracks all project milestones, active epics, task states, and cros
 ## 3. Session Handoff Log
 
 Use this section to record progress at the end of each session so future sessions resume with zero ambiguity.
+
+### Session: 2026-11-27 (Session 6 - Input System, Frame Clock & Playable Demo Games)
+* **Goal**: Implement `INP-01` (keyboard/mouse polling + `Clock`/`Timestep`) and build two playable demo games (`GAME-01` Breakout and `GAME-02` 2D Platformer) to validate engine ergonomics prior to ECS.
+* **Completed**:
+  * Implemented `include/engine/core/timestep.h` and `include/engine/core/clock.h` (`src/engine/core/clock.cpp`).
+  * Implemented `include/engine/input/` (`key_codes.h`, `mouse_button_codes.h`, `input.h`) and `src/engine/input/input.cpp`, with automatic active-window binding in `GlfwWindow`.
+  * Added `tests/input_test.cpp` (all 35/35 tests passing across engine).
+  * Authored living wiki page [docs/subsystems/input.md](docs/subsystems/input.md) and ADR [docs/adr/0006-polling-input-and-frame-timestep.md](docs/adr/0006-polling-input-and-frame-timestep.md).
+  * Built `demos/breakout/main.cpp` (`make breakout`) and `demos/platformer/main.cpp` (`make platformer`), both supporting `--frames N` headless validation.
+* **Immediate Next Steps**:
+  1. User review of local commit before pushing to `main`.
+  2. Proceed to **Milestone 2 (ECS)** (`ECS-01`) when ready, using Breakout/Platformer as refactoring testbeds.
 
 ### Session: 2026-11-24 (Session 5 - Core Math Primitives & Milestone 1 Completion)
 * **Goal**: Implement decoupled, vendor-isolated linear algebra structures (`Vector2`, `Vector3`, `Vector4`, `Matrix4`, `Transform`, `MathUtils`) and complete Milestone 1.

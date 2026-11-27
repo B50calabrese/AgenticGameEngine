@@ -6,6 +6,7 @@
 
 #include "engine/core/assert.h"
 #include "engine/core/log.h"
+#include "engine/input/input.h"
 
 namespace engine::platform {
 
@@ -54,11 +55,15 @@ void GlfwWindow::Initialize(const WindowProps& props) {
 
   glfwMakeContextCurrent(window_);
   SetVSync(is_vsync_);
+  engine::input::Input::SetTargetWindow(this);
 
   ENGINE_LOG_INFO("Window initialized successfully.");
 }
 
 void GlfwWindow::Shutdown() {
+  if (engine::input::Input::GetTargetWindow() == this) {
+    engine::input::Input::SetTargetWindow(nullptr);
+  }
   if (window_) {
     glfwDestroyWindow(window_);
     window_ = nullptr;

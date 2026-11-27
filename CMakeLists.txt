@@ -66,8 +66,10 @@ endif()
 # 3. Engine Target Definition
 # -----------------------------------------------------------------------------
 add_library(engine STATIC
+    src/engine/core/clock.cpp
     src/engine/core/log.cpp
     src/engine/core/version.cpp
+    src/engine/input/input.cpp
     src/engine/math/matrix4.cpp
     src/engine/math/transform.cpp
     src/engine/platform/glfw_window.cpp

@@ -3,8 +3,13 @@
 
 #include "engine/core/assert.h"
 #include "engine/core/base.h"
+#include "engine/core/clock.h"
 #include "engine/core/log.h"
+#include "engine/core/timestep.h"
 #include "engine/core/version.h"
+#include "engine/input/input.h"
+#include "engine/input/key_codes.h"
+#include "engine/input/mouse_button_codes.h"
 #include "engine/math/math_utils.h"
 #include "engine/math/matrix4.h"
 #include "engine/math/transform.h"

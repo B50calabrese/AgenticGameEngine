@@ -37,6 +37,12 @@ window-demo: build
 primitives-demo: build
 	./$(BUILD_DIR)/demos/primitives_demo
 
+breakout: build
+	./$(BUILD_DIR)/demos/breakout_demo
+
+platformer: build
+	./$(BUILD_DIR)/demos/platformer_demo
+
 format:
 	@if command -v clang-format >/dev/null 2>&1; then \
 		find include src tests demos -name "*.h" -o -name "*.cpp" | xargs clang-format -i; \
