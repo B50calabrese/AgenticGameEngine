@@ -52,6 +52,9 @@ font-demo: build
 ui-demo: build
 	./$(BUILD_DIR)/demos/ui_demo
 
+lua-demo: build
+	./$(BUILD_DIR)/demos/lua_demo
+
 format:
 	@if command -v clang-format >/dev/null 2>&1; then \
 		find include src tests demos -name "*.h" -o -name "*.cpp" | xargs clang-format -i; \

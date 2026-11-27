@@ -26,9 +26,10 @@ This document tracks all project milestones, active epics, task states, and cros
   - [x] `Texture2D` abstraction & image loading (`REND-02`)
   - [x] Textured quad batching & `RenderQueue` with Z-sorting (`REND-03`)
   - [x] Font & `TextRenderer` for crisp UI, HUDs, and card text (`REND-04`)
-- [ ] **Milestone 3: UI, Mouse Picking & Scene/Tweening**
+- [ ] **Milestone 3: UI, Scene/Tweening & Lua Core**
   - [x] 2D UI primitives, hit-testing (hover/click/drag), and layout helpers (`UI-01`)
   - [ ] Scene / Game State Manager & Tweening/Easing library (`CORE-02`)
+  - [x] Lua state integration and C++ bindings (`LUA-01`)
 - [ ] **Milestone 4: Entity Component System (ECS)**
   - [ ] Data-oriented contiguous component storage (`SparseSet`) (`ECS-01`)
   - [ ] Entity manager with generational IDs & recycling (`ECS-02`)
@@ -36,8 +37,7 @@ This document tracks all project milestones, active epics, task states, and cros
 - [ ] **Milestone 5: Audio & Save State (Serialization)**
   - [ ] Audio engine abstraction for SFX & music playback (`AUD-01`)
   - [ ] Serialization & Save State system for runs, settings, and scenes (`SER-01`)
-- [ ] **Milestone 6: Scripting & Extensibility (Lua)**
-  - [ ] Lua state integration and C++ bindings (`LUA-01`)
+- [ ] **Milestone 6: ECS Scripting & Hot-Reload**
   - [ ] Scriptable components, card/entity hooks, and hot-reload (`LUA-02`)
 - [ ] **Milestone 7: Developer & Debugging Tools**
   - [ ] In-engine Developer Console / Command Bar (`DBG-01`)
@@ -73,7 +73,7 @@ This document tracks all project milestones, active epics, task states, and cros
 | `ECS-03`  | Implement Registry coordinator, `View<...>()`, and deferred destruction | Systems / Coding | `TODO` | `ECS-02` |
 | `AUD-01`  | Implement Audio engine abstraction (SFX & music playback) | Systems / Coding | `TODO` | `BUILD-02` |
 | `SER-01`  | Implement Serialization & Save State system (JSON/binary) | Systems / Coding | `TODO` | `CORE-01` |
-| `LUA-01`  | Implement Lua state integration and C++ bindings | Systems / Coding | `TODO` | `ECS-03` |
+| `LUA-01`  | Implement Lua state integration and C++ bindings | Systems / Coding | `DONE` | `CORE-01`, `UI-01` |
 | `LUA-02`  | Implement scriptable components, lifecycle hooks, and hot-reload | Systems / Coding | `TODO` | `LUA-01` |
 | `DBG-01`  | Implement in-engine Developer Console / Command Bar | Systems / Coding | `TODO` | `UI-01`, `REND-04` |
 | `DBG-02`  | Implement Performance & Render Stats Overlay | Systems / Coding | `TODO` | `REND-04` |

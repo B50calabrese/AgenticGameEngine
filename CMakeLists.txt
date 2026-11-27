@@ -83,6 +83,7 @@ add_library(engine STATIC
     src/engine/renderer/font.cpp
     src/engine/renderer/stb_image.cpp
     src/engine/renderer/stb_truetype.cpp
+    src/engine/scripting/lua_state.cpp
     src/engine/ui/ui_context.cpp
     thirdparty/glad/src/glad.c
 )
@@ -116,6 +117,7 @@ set_source_files_properties(
     thirdparty/glad/src/glad.c
     src/engine/renderer/stb_image.cpp
     src/engine/renderer/stb_truetype.cpp
+    src/engine/scripting/lua_state.cpp
     src/engine/ui/ui_context.cpp
     PROPERTIES COMPILE_OPTIONS "-w"
 )
@@ -133,6 +135,24 @@ if(TARGET glfw OR glfw3_FOUND)
     target_compile_definitions(engine PUBLIC ENGINE_ENABLE_GLFW)
     target_link_libraries(engine PRIVATE glfw)
 endif()
+
+# Lua 5.4 (Scripting)
+FetchContent_Declare(
+    lua
+    GIT_REPOSITORY https://github.com/lua/lua.git
+    GIT_TAG v5.4.6
+    GIT_SHALLOW TRUE
+)
+FetchContent_GetProperties(lua)
+if(NOT lua_POPULATED)
+    FetchContent_Populate(lua)
+endif()
+file(GLOB LUA_CORE_SOURCES "${lua_SOURCE_DIR}/*.c")
+list(FILTER LUA_CORE_SOURCES EXCLUDE REGEX ".*(lua|luac|onelua)\\.c$")
+add_library(lua_static STATIC ${LUA_CORE_SOURCES})
+target_include_directories(lua_static PUBLIC ${lua_SOURCE_DIR})
+set_target_properties(lua_static PROPERTIES COMPILE_OPTIONS "-w")
+target_link_libraries(engine PRIVATE lua_static)
 
 # -----------------------------------------------------------------------------
 # 4. Tests & Demos (Gated for Submodule Consumption)

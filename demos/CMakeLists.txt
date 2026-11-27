@@ -71,3 +71,12 @@ target_link_libraries(ui_demo
     PRIVATE
         engine::engine
 )
+
+# Lua demo
+add_executable(lua_demo
+    lua_demo/main.cpp
+)
+target_link_libraries(lua_demo
+    PRIVATE
+        engine::engine
+)

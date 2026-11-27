@@ -70,6 +70,15 @@ target_link_libraries(ui_test
         GTest::gtest_main
 )
 
+add_executable(lua_test
+    lua_test.cpp
+)
+target_link_libraries(lua_test
+    PRIVATE
+        engine::engine
+        GTest::gtest_main
+)
+
 include(GoogleTest)
 gtest_discover_tests(core_test)
 gtest_discover_tests(window_test)
@@ -79,3 +88,4 @@ gtest_discover_tests(input_test)
 gtest_discover_tests(texture_test)
 gtest_discover_tests(font_test)
 gtest_discover_tests(ui_test)
+gtest_discover_tests(lua_test)
