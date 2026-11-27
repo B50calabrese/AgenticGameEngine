@@ -18,19 +18,32 @@ This document tracks all project milestones, active epics, task states, and cros
   - [x] Platform abstraction layer (windowing & OpenGL context via GLFW) (`PLAT-01`)
   - [x] 2D rendering primitives, hardware abstraction layer (HAL), and interactive demo (`REND-01`)
   - [x] Core math primitives (Vector2, Vector3, Vector4, Matrix4, Transform) (`CORE-01`)
-- [ ] **Milestone 2: Entity Component System (ECS)**
-  - [ ] Data-oriented contiguous component storage (`ECS-01`)
-  - [ ] Entity manager and recycled entity IDs (`ECS-02`)
-  - [ ] Registry coordinator with view iteration (`ECS-03`)
-- [ ] **Milestone 3: 2D/2.5D Batch Renderer**
-  - [ ] Shader abstraction and OpenGL pipeline
-  - [ ] `RenderQueue` with Z-sorting and automatic texture batching
-  - [ ] Camera abstraction (2D orthographic with extensible 3D view projections)
-- [ ] **Milestone 4: Scripting & Extensibility**
-  - [ ] Lua state integration and C++ bindings
-  - [ ] Script component and lifecycle hooks
-- [ ] **Milestone 5: Demos & Consumer Game Sample**
-  - [ ] Demo standalone game demonstrating submodule consumption
+- [x] **Milestone 1.5: Input, Frame Clock & Playable Prototypes**
+  - [x] Polling keyboard/mouse `Input` system & `Clock`/`Timestep` (`INP-01`)
+  - [x] Interactive Breakout demo (`GAME-01`)
+  - [x] Interactive 2D Platformer demo (`GAME-02`)
+- [ ] **Milestone 2: 2D Textures, Sprites & Text Rendering**
+  - [ ] `Texture2D` abstraction & image loading (`REND-02`)
+  - [ ] Textured quad batching & `RenderQueue` with Z-sorting (`REND-03`)
+  - [ ] Font & `TextRenderer` for crisp UI, HUDs, and card text (`REND-04`)
+- [ ] **Milestone 3: UI, Mouse Picking & Scene/Tweening**
+  - [ ] 2D UI primitives, hit-testing (hover/click/drag), and layout helpers (`UI-01`)
+  - [ ] Scene / Game State Manager & Tweening/Easing library (`CORE-02`)
+- [ ] **Milestone 4: Entity Component System (ECS)**
+  - [ ] Data-oriented contiguous component storage (`SparseSet`) (`ECS-01`)
+  - [ ] Entity manager with generational IDs & recycling (`ECS-02`)
+  - [ ] Registry coordinator, `View<...>()`, and deferred destruction (`ECS-03`)
+- [ ] **Milestone 5: Audio & Save State (Serialization)**
+  - [ ] Audio engine abstraction for SFX & music playback (`AUD-01`)
+  - [ ] Serialization & Save State system for runs, settings, and scenes (`SER-01`)
+- [ ] **Milestone 6: Scripting & Extensibility (Lua)**
+  - [ ] Lua state integration and C++ bindings (`LUA-01`)
+  - [ ] Scriptable components, card/entity hooks, and hot-reload (`LUA-02`)
+- [ ] **Milestone 7: Developer & Debugging Tools**
+  - [ ] In-engine Developer Console / Command Bar (`DBG-01`)
+  - [ ] Performance & Render Stats Overlay (`DBG-02`)
+- [ ] **Milestone 8: Showcase Consumer Game (Roguelike Deckbuilder)**
+  - [ ] Standalone Roguelike Deckbuilder consuming `engine::engine` as a git submodule (`GAME-03`)
 
 ---
 
@@ -50,7 +63,21 @@ This document tracks all project milestones, active epics, task states, and cros
 | `INP-01`  | Implement polling Input system (`KeyCode`, `MouseButton`) and `Clock`/`Timestep` | Systems / Coding | `DONE` | `PLAT-01` |
 | `GAME-01` | Build interactive Breakout demo game (`demos/breakout`) | Coding | `DONE` | `INP-01`, `REND-01` |
 | `GAME-02` | Build interactive 2D Platformer demo game (`demos/platformer`) | Coding | `DONE` | `INP-01`, `REND-01` |
-| `ECS-01`  | Implement data-oriented contiguous component storage (SparseSet) | Systems / Coding | `TODO` | `CORE-01` |
+| `REND-02` | Implement `Texture2D` abstraction and image loading (`stb_image`) | Systems / Coding | `TODO` | `REND-01` |
+| `REND-03` | Implement textured quad batching & `RenderQueue` (Z-sorting, texture slots) | Systems / Coding | `TODO` | `REND-02` |
+| `REND-04` | Implement Font & `TextRenderer` (`stb_truetype` / FreeType) | Systems / Coding | `TODO` | `REND-03` |
+| `UI-01`   | Implement 2D UI primitives, mouse hit-testing (hover/click/drag), and layout | Systems / Coding | `TODO` | `REND-04`, `INP-01` |
+| `CORE-02` | Implement Scene/State Manager and Tweening/Easing library | Systems / Coding | `TODO` | `CORE-01` |
+| `ECS-01`  | Implement data-oriented contiguous component storage (`SparseSet`) | Systems / Coding | `TODO` | `CORE-01` |
+| `ECS-02`  | Implement Entity Manager with generational IDs & recycling | Systems / Coding | `TODO` | `ECS-01` |
+| `ECS-03`  | Implement Registry coordinator, `View<...>()`, and deferred destruction | Systems / Coding | `TODO` | `ECS-02` |
+| `AUD-01`  | Implement Audio engine abstraction (SFX & music playback) | Systems / Coding | `TODO` | `BUILD-02` |
+| `SER-01`  | Implement Serialization & Save State system (JSON/binary) | Systems / Coding | `TODO` | `CORE-01` |
+| `LUA-01`  | Implement Lua state integration and C++ bindings | Systems / Coding | `TODO` | `ECS-03` |
+| `LUA-02`  | Implement scriptable components, lifecycle hooks, and hot-reload | Systems / Coding | `TODO` | `LUA-01` |
+| `DBG-01`  | Implement in-engine Developer Console / Command Bar | Systems / Coding | `TODO` | `UI-01`, `REND-04` |
+| `DBG-02`  | Implement Performance & Render Stats Overlay | Systems / Coding | `TODO` | `REND-04` |
+| `GAME-03` | Build standalone Roguelike Deckbuilder consumer game | Coding / Docs | `TODO` | `UI-01`, `ECS-03`, `AUD-01`, `SER-01`, `LUA-02` |
 
 *Status definitions: `TODO`, `IN_PROGRESS`, `REVIEW`, `DONE`, `BLOCKED`.*
 
