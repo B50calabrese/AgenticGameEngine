@@ -24,7 +24,7 @@ This document tracks all project milestones, active epics, task states, and cros
   - [x] Interactive 2D Platformer demo (`GAME-02`)
 - [ ] **Milestone 2: 2D Textures, Sprites & Text Rendering**
   - [x] `Texture2D` abstraction & image loading (`REND-02`)
-  - [ ] Textured quad batching & `RenderQueue` with Z-sorting (`REND-03`)
+  - [x] Textured quad batching & `RenderQueue` with Z-sorting (`REND-03`)
   - [ ] Font & `TextRenderer` for crisp UI, HUDs, and card text (`REND-04`)
 - [ ] **Milestone 3: UI, Mouse Picking & Scene/Tweening**
   - [ ] 2D UI primitives, hit-testing (hover/click/drag), and layout helpers (`UI-01`)
@@ -64,7 +64,7 @@ This document tracks all project milestones, active epics, task states, and cros
 | `GAME-01` | Build interactive Breakout demo game (`demos/breakout`) | Coding | `DONE` | `INP-01`, `REND-01` |
 | `GAME-02` | Build interactive 2D Platformer demo game (`demos/platformer`) | Coding | `DONE` | `INP-01`, `REND-01` |
 | `REND-02` | Implement `Texture2D` abstraction and image loading (`stb_image`) | Systems / Coding | `DONE` | `REND-01` |
-| `REND-03` | Implement textured quad batching & `RenderQueue` (Z-sorting, texture slots) | Systems / Coding | `TODO` | `REND-02` |
+| `REND-03` | Implement textured quad batching & `RenderQueue` (Z-sorting, texture slots) | Systems / Coding | `DONE` | `REND-02` |
 | `REND-04` | Implement Font & `TextRenderer` (`stb_truetype` / FreeType) | Systems / Coding | `TODO` | `REND-03` |
 | `UI-01`   | Implement 2D UI primitives, mouse hit-testing (hover/click/drag), and layout | Systems / Coding | `TODO` | `REND-04`, `INP-01` |
 | `CORE-02` | Implement Scene/State Manager and Tweening/Easing library | Systems / Coding | `TODO` | `CORE-01` |

@@ -3,6 +3,7 @@
 #include "engine/renderer/buffer.h"
 #include "engine/renderer/color.h"
 #include "engine/renderer/primitive_renderer.h"
+#include "engine/renderer/render_queue.h"
 
 namespace {
 
@@ -110,6 +111,20 @@ TEST(PrimitiveRendererTest, StatisticsResetAndAccumulation) {
   EXPECT_EQ(stats.quad_count, 0u);
   EXPECT_EQ(stats.triangle_count, 0u);
   EXPECT_EQ(stats.line_count, 0u);
+}
+
+TEST(RenderQueueTest, SubmitAndClearManagesCommandCount) {
+  engine::renderer::RenderQueue queue;
+  EXPECT_EQ(queue.GetCommandCount(), 0u);
+
+  queue.SubmitQuad(engine::math::Vector2(0.0f, 0.0f),
+                   engine::math::Vector2(10.0f, 10.0f), Color::Red(), 1.0f);
+  queue.SubmitQuad(engine::math::Vector2(5.0f, 5.0f),
+                   engine::math::Vector2(10.0f, 10.0f), Color::Blue(), 0.0f);
+  EXPECT_EQ(queue.GetCommandCount(), 2u);
+
+  queue.Clear();
+  EXPECT_EQ(queue.GetCommandCount(), 0u);
 }
 
 }  // namespace

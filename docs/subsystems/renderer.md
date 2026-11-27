@@ -48,7 +48,8 @@ Public headers live exclusively in `include/engine/renderer/`:
 | `shader.h` | `Shader` | GLSL program compilation, linking, and uniform dispatch (`SetInt`, `SetFloat`, `SetMat4`). |
 | `texture.h` | `Texture2D`, `TextureSpecification` | 2D GPU texture abstraction supporting procedural memory upload (`SetData`) and image file loading (`stb_image`). |
 | `render_command.h` | `RenderCommand` | Low-level context initialization (GLAD), clear color, viewport, and indexed/line draw execution. |
-| `primitive_renderer.h`| `PrimitiveRenderer` | Batched 2D geometry renderer with built-in orthographic projection and frame statistics. |
+| `primitive_renderer.h`| `PrimitiveRenderer` | Batched 2D geometry & textured quad renderer (up to 16 texture slots per batch) with frame statistics. |
+| `render_queue.h` | `RenderQueue` | Z-sorted submission queue that orders draw calls back-to-front before flushing through `PrimitiveRenderer`. |
 
 ---
 

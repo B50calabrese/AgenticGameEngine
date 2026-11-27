@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "engine/renderer/color.h"
+#include "engine/renderer/texture.h"
 
 namespace engine::math {
 struct Vector2;
@@ -131,6 +132,34 @@ class PrimitiveRenderer {
                          const Color& color, std::uint32_t segments = 32);
   static void DrawCircle(const engine::math::Vector2& center, float radius,
                          const Color& color, std::uint32_t segments = 32);
+
+  /**
+   * @brief Draws a textured quad.
+   */
+  static void DrawTexturedQuad(const engine::math::Vector2& position,
+                               const engine::math::Vector2& size,
+                               const std::shared_ptr<Texture2D>& texture,
+                               const Color& tint = Color::White());
+
+  /**
+   * @brief Draws a rotated textured quad.
+   */
+  static void DrawTexturedQuad(const engine::math::Vector2& position,
+                               const engine::math::Vector2& size,
+                               const std::shared_ptr<Texture2D>& texture,
+                               float rotation_radians,
+                               const Color& tint = Color::White());
+
+  /**
+   * @brief Draws a rotated textured quad with custom UV sub-rectangle.
+   */
+  static void DrawTexturedQuad(const engine::math::Vector2& position,
+                               const engine::math::Vector2& size,
+                               const std::shared_ptr<Texture2D>& texture,
+                               const engine::math::Vector2& uv_min,
+                               const engine::math::Vector2& uv_max,
+                               float rotation_radians = 0.0f,
+                               const Color& tint = Color::White());
 
   // --- Statistics ---
   static const Statistics& GetStats();

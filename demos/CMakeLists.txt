@@ -37,3 +37,11 @@ target_link_libraries(platformer_demo
     PRIVATE
         engine::engine
 )
+
+add_executable(textures_demo
+    textures/main.cpp
+)
+target_link_libraries(textures_demo
+    PRIVATE
+        engine::engine
+)

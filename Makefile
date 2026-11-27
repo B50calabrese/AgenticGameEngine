@@ -43,6 +43,9 @@ breakout: build
 platformer: build
 	./$(BUILD_DIR)/demos/platformer_demo
 
+textures-demo: build
+	./$(BUILD_DIR)/demos/textures_demo
+
 format:
 	@if command -v clang-format >/dev/null 2>&1; then \
 		find include src tests demos -name "*.h" -o -name "*.cpp" | xargs clang-format -i; \
