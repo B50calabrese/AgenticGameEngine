@@ -80,6 +80,7 @@ add_library(engine STATIC
     src/engine/renderer/primitive_renderer.cpp
     src/engine/renderer/render_command.cpp
     src/engine/renderer/render_queue.cpp
+    src/engine/renderer/font.cpp
     src/engine/renderer/stb_image.cpp
     src/engine/renderer/stb_truetype.cpp
     thirdparty/glad/src/glad.c
