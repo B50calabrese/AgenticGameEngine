@@ -22,6 +22,7 @@
 #include "engine/renderer/primitive_renderer.h"
 #include "engine/renderer/render_command.h"
 #include "engine/renderer/shader.h"
+#include "engine/renderer/texture.h"
 #include "engine/renderer/vertex_array.h"
 
 namespace engine {

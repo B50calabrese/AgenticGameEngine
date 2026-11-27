@@ -46,6 +46,7 @@ Public headers live exclusively in `include/engine/renderer/`:
 | `buffer.h` | `VertexBuffer`, `IndexBuffer`, `BufferLayout` | RAII GPU buffer interfaces with dynamic memory upload and automatic stride/offset calculation. |
 | `vertex_array.h` | `VertexArray` | VAO state binding vertex buffers with attribute pointers and index buffer. |
 | `shader.h` | `Shader` | GLSL program compilation, linking, and uniform dispatch (`SetInt`, `SetFloat`, `SetMat4`). |
+| `texture.h` | `Texture2D`, `TextureSpecification` | 2D GPU texture abstraction supporting procedural memory upload (`SetData`) and image file loading (`stb_image`). |
 | `render_command.h` | `RenderCommand` | Low-level context initialization (GLAD), clear color, viewport, and indexed/line draw execution. |
 | `primitive_renderer.h`| `PrimitiveRenderer` | Batched 2D geometry renderer with built-in orthographic projection and frame statistics. |
 

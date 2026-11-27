@@ -43,9 +43,19 @@ target_link_libraries(input_test
         GTest::gtest_main
 )
 
+add_executable(texture_test
+    texture_test.cpp
+)
+target_link_libraries(texture_test
+    PRIVATE
+        engine::engine
+        GTest::gtest_main
+)
+
 include(GoogleTest)
 gtest_discover_tests(core_test)
 gtest_discover_tests(window_test)
 gtest_discover_tests(renderer_test)
 gtest_discover_tests(math_test)
 gtest_discover_tests(input_test)
+gtest_discover_tests(texture_test)
