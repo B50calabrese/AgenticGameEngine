@@ -116,3 +116,12 @@ target_link_libraries(save_demo
     PRIVATE
         engine::engine
 )
+
+# ECS + Lua Hot-Reload demo
+add_executable(ecs_lua_demo
+    ecs_lua_demo/main.cpp
+)
+target_link_libraries(ecs_lua_demo
+    PRIVATE
+        engine::engine
+)

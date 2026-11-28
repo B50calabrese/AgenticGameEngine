@@ -86,6 +86,7 @@ add_library(engine STATIC
     src/engine/renderer/stb_image.cpp
     src/engine/renderer/stb_truetype.cpp
     src/engine/scripting/lua_state.cpp
+    src/engine/scripting/script_system.cpp
     src/engine/serialization/save_state.cpp
     src/engine/ui/ui_context.cpp
     thirdparty/glad/src/glad.c
@@ -121,6 +122,7 @@ set_source_files_properties(
     src/engine/renderer/stb_image.cpp
     src/engine/renderer/stb_truetype.cpp
     src/engine/scripting/lua_state.cpp
+    src/engine/scripting/script_system.cpp
     src/engine/serialization/save_state.cpp
     src/engine/ui/ui_context.cpp
     PROPERTIES COMPILE_OPTIONS "-w"

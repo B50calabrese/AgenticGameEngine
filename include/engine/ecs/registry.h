@@ -1,6 +1,8 @@
 #ifndef ENGINE_ECS_REGISTRY_H_
 #define ENGINE_ECS_REGISTRY_H_
 
+#include <algorithm>
+#include <functional>
 #include <memory>
 #include <tuple>
 #include <typeindex>
@@ -26,7 +28,15 @@ class Registry {
       return;
     }
     for (auto& [type, pool] : pools_) {
-      pool->Remove(entity);
+      if (pool->Has(entity)) {
+        auto sig_it = on_destroy_.find(type);
+        if (sig_it != on_destroy_.end()) {
+          for (auto& cb : sig_it->second) {
+            cb(*this, entity);
+          }
+        }
+        pool->Remove(entity);
+      }
     }
     entities_.Destroy(entity);
   }
@@ -45,14 +55,53 @@ class Registry {
 
   template <typename T, typename... Args>
   T& AddComponent(EntityId entity, Args&&... args) {
-    return GetOrCreatePool<T>()->Emplace(entity, std::forward<Args>(args)...);
+    T& comp = GetOrCreatePool<T>()->Emplace(entity, std::forward<Args>(args)...);
+    auto it = on_construct_.find(std::type_index(typeid(T)));
+    if (it != on_construct_.end()) {
+      for (auto& cb : it->second) {
+        cb(*this, entity);
+      }
+    }
+    return comp;
   }
 
   template <typename T>
   void RemoveComponent(EntityId entity) {
     if (auto* pool = GetPool<T>()) {
-      pool->Remove(entity);
+      if (pool->Has(entity)) {
+        auto it = on_destroy_.find(std::type_index(typeid(T)));
+        if (it != on_destroy_.end()) {
+          for (auto& cb : it->second) {
+            cb(*this, entity);
+          }
+        }
+        pool->Remove(entity);
+      }
     }
+  }
+
+  template <typename T>
+  T* TryGetComponent(EntityId entity) {
+    auto* pool = GetPool<T>();
+    return pool != nullptr ? pool->TryGet(entity) : nullptr;
+  }
+
+  template <typename T>
+  const T* TryGetComponent(EntityId entity) const {
+    const auto* pool = GetPool<T>();
+    return pool != nullptr ? pool->TryGet(entity) : nullptr;
+  }
+
+  using SignalCallback = std::function<void(Registry&, EntityId)>;
+
+  template <typename T>
+  void OnConstruct(SignalCallback cb) {
+    on_construct_[std::type_index(typeid(T))].push_back(std::move(cb));
+  }
+
+  template <typename T>
+  void OnDestroy(SignalCallback cb) {
+    on_destroy_[std::type_index(typeid(T))].push_back(std::move(cb));
   }
 
   template <typename T>
@@ -78,13 +127,21 @@ class Registry {
 
     template <typename Fn>
     void Each(Fn&& fn) {
-      auto* primary = std::get<0>(pools_);
-      if (primary == nullptr) {
+      if (((std::get<SparseSet<Ts>*>(pools_) == nullptr) || ...)) {
         return;
       }
-      const auto& entities = primary->Entities();
-      for (std::size_t i = 0; i < entities.size(); ++i) {
-        const EntityId entity = entities[i];
+      const std::vector<EntityId>* smallest = nullptr;
+      std::size_t min_size = std::numeric_limits<std::size_t>::max();
+      auto check_pool = [&](const auto* pool) {
+        if (pool->Size() < min_size) {
+          min_size = pool->Size();
+          smallest = &pool->Entities();
+        }
+      };
+      (check_pool(std::get<SparseSet<Ts>*>(pools_)), ...);
+
+      for (std::size_t i = 0; i < smallest->size(); ++i) {
+        const EntityId entity = (*smallest)[i];
         if ((std::get<SparseSet<Ts>*>(pools_)->Has(entity) && ...)) {
           fn(entity, std::get<SparseSet<Ts>*>(pools_)->Get(entity)...);
         }
@@ -126,6 +183,8 @@ class Registry {
 
   EntityManager entities_;
   std::unordered_map<std::type_index, std::unique_ptr<ISparseSet>> pools_;
+  std::unordered_map<std::type_index, std::vector<SignalCallback>> on_construct_;
+  std::unordered_map<std::type_index, std::vector<SignalCallback>> on_destroy_;
   std::vector<EntityId> destroy_queue_;
 };
 

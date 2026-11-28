@@ -37,8 +37,8 @@ This document tracks all project milestones, active epics, task states, and cros
 - [x] **Milestone 5: Audio & Save State (Serialization)**
   - [x] Audio engine abstraction for SFX & music playback (`AUD-01`)
   - [x] Serialization & Save State system for runs, settings, and scenes (`SER-01`)
-- [ ] **Milestone 6: ECS Scripting & Hot-Reload**
-  - [ ] Scriptable components, card/entity hooks, and hot-reload (`LUA-02`)
+- [x] **Milestone 6: ECS Scripting & Hot-Reload**
+  - [x] Scriptable components, card/entity hooks, and hot-reload (`LUA-02`)
 - [ ] **Milestone 7: Developer & Debugging Tools**
   - [ ] In-engine Developer Console / Command Bar (`DBG-01`)
   - [ ] Performance & Render Stats Overlay (`DBG-02`)
@@ -74,7 +74,7 @@ This document tracks all project milestones, active epics, task states, and cros
 | `AUD-01`  | Implement Audio engine abstraction (SFX & music playback) | Systems / Coding | `DONE` | `BUILD-02` |
 | `SER-01`  | Implement Serialization & Save State system (JSON/binary) | Systems / Coding | `DONE` | `CORE-01` |
 | `LUA-01`  | Implement Lua state integration and C++ bindings | Systems / Coding | `DONE` | `CORE-01`, `UI-01` |
-| `LUA-02`  | Implement scriptable components, lifecycle hooks, and hot-reload | Systems / Coding | `TODO` | `LUA-01` |
+| `LUA-02`  | Implement scriptable components, lifecycle hooks, and hot-reload | Systems / Coding | `DONE` | `LUA-01` |
 | `DBG-01`  | Implement in-engine Developer Console / Command Bar | Systems / Coding | `TODO` | `UI-01`, `REND-04` |
 | `DBG-02`  | Implement Performance & Render Stats Overlay | Systems / Coding | `TODO` | `REND-04` |
 | `GAME-03` | Build standalone Roguelike Deckbuilder consumer game | Coding / Docs | `TODO` | `UI-01`, `ECS-03`, `AUD-01`, `SER-01`, `LUA-02` |

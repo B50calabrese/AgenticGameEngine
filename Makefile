@@ -67,6 +67,9 @@ audio-demo: build
 save-demo: build
 	./$(BUILD_DIR)/demos/save_demo
 
+ecs-lua-demo: build
+	./$(BUILD_DIR)/demos/ecs_lua_demo
+
 format:
 	@if command -v clang-format >/dev/null 2>&1; then \
 		find include src tests demos -name "*.h" -o -name "*.cpp" | xargs clang-format -i; \

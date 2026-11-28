@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 
+#include "engine/ecs/components.h"
 #include "engine/ecs/registry.h"
 
 namespace engine::ecs {
@@ -75,6 +76,26 @@ TEST(RegistryTest, ViewAndDeferredDestructionWorkCorrectly) {
   reg.FlushDestroyed();
   EXPECT_FALSE(reg.IsAlive(a));
   EXPECT_EQ(reg.AliveCount(), 1u);
+}
+
+TEST(RegistryTest, TryGetAndLifecycleSignalsWork) {
+  Registry reg;
+  int constructed = 0;
+  int destroyed = 0;
+  reg.OnConstruct<TagComponent>([&](Registry&, EntityId) { ++constructed; });
+  reg.OnDestroy<TagComponent>([&](Registry&, EntityId) { ++destroyed; });
+
+  EntityId e = reg.CreateEntity();
+  EXPECT_EQ(reg.TryGetComponent<TagComponent>(e), nullptr);
+
+  reg.AddComponent<TagComponent>(e, "Hero");
+  EXPECT_EQ(constructed, 1);
+  auto* tag = reg.TryGetComponent<TagComponent>(e);
+  ASSERT_NE(tag, nullptr);
+  EXPECT_EQ(tag->tag, "Hero");
+
+  reg.DestroyEntity(e);
+  EXPECT_EQ(destroyed, 1);
 }
 
 }  // namespace
